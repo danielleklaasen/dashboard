@@ -12,6 +12,7 @@ require_once('templates/topbar.php');
 require_once('templates/sidebar.php');
 
 // insert screens
+require_once('screens/search.php');
 require_once('screens/home.php');
 
 // insert footer

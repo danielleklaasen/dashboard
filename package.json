@@ -1,10 +1,15 @@
 {
-  "name": "dashboard",
   "version": "1.0.0",
+  "name": "dashboard",
   "description": "Dashboard panel for a bike repair app",
+  "author": "Danielle Klaasen",
   "main": "gulpfile.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/danielleklaasen/dashboard"
+  },
   "scripts": {
-    "test": "main.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "dashboard",
@@ -13,9 +18,24 @@
     "gulp",
     "template"
   ],
-  "author": "Danielle Klaasen",
-  "license": "ISC",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
   "devDependencies": {
-    "gulp": "^3.9.1"
+    "browser-sync": "^2.18.13",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-cache": "^0.4.6",
+    "gulp-imagemin": "^3.4.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "run-sequence": "^2.2.0"
+  },
+  "dependencies": {
+    "jquery": "^3.2.1"
   }
 }

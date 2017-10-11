@@ -3,7 +3,7 @@
   width: $sidebar-width;
   position: absolute;
   top:0;
-  left: 0;
+  left: -23vw;
   height: 100%;
   color: $base-color;
   header{
@@ -19,7 +19,7 @@
     }
   }
   .menu-item{
-    margin: 0 30px;
+    margin: 0 20px;
     padding: 15px 0;
     color: $secondary-color;
     @include flexbox();
@@ -32,6 +32,14 @@
       color: $base-color;
       cursor: pointer;
       opacity: 0.8;
+    }
+    &.active{
+      .btn-square{
+        background-color: $accent-color;
+        .icon{
+          color: $primary-color;
+        }
+      }
     }
     .btn-square{
       .icon{

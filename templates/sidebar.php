@@ -2,7 +2,7 @@
     <header>
         <a href="#" class="h1">Bike Repair</a>
     </header>
-    <div class="menu-item">
+    <div class="menu-item active">
         <p>Dashboard</p>
         <div class="btn-square"><div class="icon icon-basic-home"></div></div>
     </div>

@@ -1,0 +1,43 @@
+#sidebar{
+  background-color: rgba($primary-color, 0.9);
+  width: $sidebar-width;
+  position: absolute;
+  top:0;
+  left: 0;
+  height: 100%;
+  color: $base-color;
+  header{
+    width: 100%;
+    background-color: rgba($primary-color, 0.7);
+    height: $topbar-height;
+    @include flexbox();
+    @include flex-direction(row);
+    @include align-items(center);
+    @include justify-content(center);
+    a{
+      color: $base-color;
+    }
+  }
+  .menu-item{
+    margin: 0 30px;
+    padding: 15px 0;
+    color: $secondary-color;
+    @include flexbox();
+    @include flex-direction(row);
+    @include justify-content(space-between);
+    @include align-items(center);
+    border-bottom: 1px solid $primary-color;
+    transition: 0.2s;
+    &:hover{
+      color: $base-color;
+      cursor: pointer;
+      opacity: 0.8;
+    }
+    .btn-square{
+      .icon{
+        color: $base-color;
+        padding: 6px 0 0 6px;
+      }
+    }
+  }
+}

@@ -9,9 +9,13 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   color: $primary-color;
 }
 
+p, a{
+  font-size: 1em;
+  font-weight: $light;
+}
+
 a{
   font-family: 'Montserrat', sans-serif;
-  font-size: 1em;
   @include base-font();
   text-decoration: none;
   color: $primary-color;

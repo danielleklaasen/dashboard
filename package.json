@@ -1,0 +1,21 @@
+{
+  "name": "dashboard",
+  "version": "1.0.0",
+  "description": "Dashboard panel for a bike repair app",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "main.js"
+  },
+  "keywords": [
+    "dashboard",
+    "bike",
+    "repair",
+    "gulp",
+    "template"
+  ],
+  "author": "Danielle Klaasen",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}

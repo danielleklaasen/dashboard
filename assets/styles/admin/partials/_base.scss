@@ -1,0 +1,31 @@
+// The partials directory is where the meat of my CSS
+// is constructed. It is your css broken down into smaller part, A lot of folks like to break their
+// can be stylesheets into header, content, sidebar, and footer
+// components (and a few others). Or much finer
+// categories (typography, buttons, textboxes, selectboxes, etc…).
+
+// the base file is used to import all mixins + global project variables
+
+// Use Compass ('cause it rocks!)
+@import "compass";
+
+// Font weights
+$light: 100;
+$regular: 400;
+$bold: 600;
+
+// Base Font
+$base-font-family: sans-serif;
+$base-font-weight: $regular;
+$base-font-size: 13px;
+$base-line-height: 1.4;
+
+// Fixed Font
+$fixed-font-family: monospace;
+$fixed-font-size: 85%;
+$fixed-line-height: $base-line-height;
+
+// Headings
+$header-font-weight: $bold;
+
+@import "../modules/all";

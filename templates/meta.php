@@ -13,6 +13,3 @@
     <title>TechCPH</title>
 </head>
 <body>
-<?php
-echo nl2br ("meta \n");
-?>

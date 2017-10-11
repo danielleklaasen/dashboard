@@ -14,18 +14,23 @@ var del = require('del');
 var uglify = require('gulp-uglify');
 var rename = require("gulp-rename");
 var runSequence = require('run-sequence');
+var cleanCSS = require('gulp-clean-css');
 
-// Default gulp task: BUILD
-gulp.task('default', function() {
-    // clean up dist
+gulp.task('default', function (callback) { //watcher
+    runSequence(['sass','browserSync', 'watch'],
+        callback
+    )
+});
 
-    // populate dist (js, css, img)
-
+gulp.task('build', function (callback) {
+    runSequence('clean:dist',
+        ['sass', 'useref', 'images'],
+        callback
+    )
 });
 
 // Gulp watch syntax
 gulp.task('watch', ['browserSync', 'sass'], function(){
-
     // Gets all files ending with .scss in assets/styles and children dirs
     gulp.watch('assets/styles/**/*.scss', ['sass']);
 
@@ -50,10 +55,8 @@ gulp.task('sass', function(){
         .pipe(sass()) // Using gulp-sass
         .pipe(gulp.dest('dist/styles/')) // output in distribution folder
         .pipe(browserSync.reload({ // reload browser
-        stream: true
+            stream: true
         }));
-
-    // also minify css
 });
 
 // Minify js and reload browser
@@ -66,6 +69,25 @@ gulp.task('js', function () {
             stream: true
         }));
 });
+
+// Minify js and css combined task
+gulp.task('useref', function (callback) {
+   // combine 2 tasks
+    runSequence(['minify-js', 'minify-css'], callback);
+});
+gulp.task('minify-js', function () {
+    return gulp.src('assets/scripts/*.js')
+        .pipe(uglify()) // minify
+        .pipe(rename({ suffix: '.min' })) // adding .min
+        .pipe(gulp.dest('dist/scripts')); // destination folder
+});
+gulp.task('minify-css', function(){
+    return gulp.src('dist/styles/*.css')
+        .pipe(cleanCSS({compatibility: 'ie8'}))
+        .pipe(rename({ suffix: '.min' })) // adding .min
+        .pipe(gulp.dest('dist/styles'));
+});
+
 
 // Minify images
 gulp.task('images', function(){
@@ -85,7 +107,7 @@ gulp.task('clean:dist', function() {
     return del.sync('dist');
 });
 
-// Clear cach
+// Clear cache
 gulp.task('cache:clear', function (callback) {
     return cache.clearAll(callback)
 });

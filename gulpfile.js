@@ -24,7 +24,7 @@ gulp.task('default', function (callback) { //watcher
 
 gulp.task('build', function (callback) {
     runSequence('clean:dist',
-        ['sass', 'useref', 'images'],
+        ['sass', 'images'], 'useref',
         callback
     )
 });

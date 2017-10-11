@@ -1,0 +1,21 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body,html{
+  width: 100vw;
+  height: 100vh;
+  font: normal 100% $base-font-family; /* default weight (normal) browser default size (16 px) */
+
+  background-color: $secondary-color;
+}
+
+.container{
+  @include flexbox();
+  @include flex-direction(row);
+  @include justify-content(flex-end);
+}
+.wrapper{
+  width: $content-width;
+}

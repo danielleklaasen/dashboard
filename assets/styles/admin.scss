@@ -1,13 +1,18 @@
+// Third-party
+@import "vendor/flex";
+
 // Modules and Variables
 @import "admin/partials/base";
 
 // Partials
 @import "admin/partials/reset";
+@import "admin/partials/general";
 @import "admin/partials/typography";
 @import "admin/partials/buttons";
 @import "admin/partials/figures";
 @import "admin/partials/grids";
+@import "admin/partials/topbar";
 
 // Third-party
-// @import "vendor/colorpicker";
+@import "vendor/icons";
 // @import "vendor/jquery.ui.core";

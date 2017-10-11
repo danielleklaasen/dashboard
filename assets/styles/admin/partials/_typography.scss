@@ -1,0 +1,33 @@
+h1, .h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: $regular;
+  font-size: 1.5em;
+  letter-spacing: -2px;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+  color: $primary-color;
+}
+
+a{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1em;
+  @include base-font();
+  text-decoration: none;
+  color: $primary-color;
+}
+
+/* CALCULATING EMS
+target ÷ context = result
+
+example:
+24 ÷ 16 = 1.5
+
+explanation: you want 24 px, base is 16 px.
+set styling to 1.5 em.
+
+***************************************************
+
+LINE HEIGHT
+Multiply your letter size by 1.618 and you will get perfect line height.
+*/

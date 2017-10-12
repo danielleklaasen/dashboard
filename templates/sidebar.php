@@ -10,12 +10,12 @@
         <p>Pending reports</p>
         <div class="btn-square"><div class="icon icon-basic-sheet-txt"></div></div>
     </div>
-    <div class="menu-item">
+   <!-- <div class="menu-item">
         <p>Declined reports</p>
         <div class="btn-square"><div class="close"></div></div>
-    </div>
-    <div class="menu-item">
-        <p>Archive</p>
+    </div> -->
+    <div class="open-archive-wdw menu-item">
+        <p>Completed reports</p>
         <div class="btn-square"><div class="icon icon-basic-archive-full"></div></div>
     </div>
   <!--  <div class="menu-item">

@@ -20,12 +20,28 @@ $(document).on('click','.open-report-wdw', function(){
 });
 
 var fnOpenReportWdw = function (){
+    fnCloseAllWdws();
     var sReport = $('.report-wdw');
     sReport.addClass('open');
     sReport.fadeIn();
 
     fnSetActiveMenuItem('open-report-wdw');
 };
+
+// open-archive-wdw
+$(document).on('click','.open-archive-wdw', function(){
+    fnOpenArchiveWdw();
+});
+
+var fnOpenArchiveWdw = function (){
+    var sWdw = $('.archive-wdw');
+    sWdw.addClass('open');
+    sWdw.fadeIn();
+
+    fnSetActiveMenuItem('open-archive-wdw');
+};
+
+
 
 // open-home-wdw
 $(document).on('click','.open-home', function(){
@@ -34,11 +50,14 @@ $(document).on('click','.open-home', function(){
 
 var fnOpenHomeWdw = function (){
     // close all windows, home page is always open (main html)
+    fnCloseAllWdws();
+    fnSetActiveMenuItem('open-home');
+};
+
+var fnCloseAllWdws = function () {
     var sOpenWindow = $('.wdw.open');
     sOpenWindow.fadeOut();
     sOpenWindow.removeClass('open');
-
-    fnSetActiveMenuItem('open-home');
 };
 
 var fnSetActiveMenuItem = function (activeMenuItem) {
@@ -103,4 +122,52 @@ var fnOpenSearch = function (){
     $( "#search-input" ).focus();
 };
 
+/********************************************************************************
 
+ ACCEPT / DECLINE
+
+ ********************************************************************************/
+
+// accept
+$(document).on('click','.report-accept', function(){
+    fnAcceptReport();
+});
+
+var fnAcceptReport = function (){
+    swal(
+        'Approved!',
+        'Report accepted.',
+        'success'
+    );
+};
+
+// decline
+$(document).on('click','.report-decline', function(){
+    fnDeclineReport();
+});
+
+var fnDeclineReport = function (){
+    swal(
+        'Declined',
+        'Report declined.',
+        'error'
+    );
+};
+
+/********************************************************************************
+
+ DELETE
+
+ ********************************************************************************/
+
+$(document).on('click','.report-delete', function(){
+    fnDeleteReport();
+});
+
+var fnDeleteReport = function (){
+    swal(
+        'Deleted!',
+        'Report deleted.',
+        'success'
+    );
+};

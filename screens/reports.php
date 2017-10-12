@@ -1,13 +1,13 @@
 <div class="wdw report-wdw container">
     <div class="wrapper">
         <div class="top-space"></div>
-        <h2>Pending reports ...</h2>
+        <h2>Pending reports</h2>
         <br>
         <div class="card-grid vertical-cards">
             <div class="text-report-card card card-1">
                 <div class="h4 card-text">Broken chain</div>
                 <div class="card-buttons">
-                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    <svg class="report-accept" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                          width="30px" height="30px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
 <g>
     <polygon class="report-accept" points="25.707,46 49.707,21.854 48.293,20.366 25,43.623 13.707,32.312 12.293,33.863 24.293,46 	"/>
@@ -20,7 +20,7 @@
 </g>
 </svg>
 
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<svg class="report-decline" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
      width="30px" height="30px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
 <g>
     <polygon class="report-decline" points="18.335,42.449 19.755,43.858 32.002,31.519 44.341,43.766 45.749,42.346 33.41,30.1 45.657,17.76 44.237,16.351
@@ -38,7 +38,7 @@
             <div class="text-report-card card card-1">
                 <div class="h4 card-text">Ripped saddle</div>
                 <div class="card-buttons">
-                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    <svg class="report-accept" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                          width="30px" height="30px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
 <g>
     <polygon class="report-accept" points="25.707,46 49.707,21.854 48.293,20.366 25,43.623 13.707,32.312 12.293,33.863 24.293,46 	"/>
@@ -51,7 +51,7 @@
 </g>
 </svg>
 
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<svg class="report-decline" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
      width="30px" height="30px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
 <g>
     <polygon class="report-decline" points="18.335,42.449 19.755,43.858 32.002,31.519 44.341,43.766 45.749,42.346 33.41,30.1 45.657,17.76 44.237,16.351
@@ -69,7 +69,7 @@
             <div class="text-report-card card card-1">
                 <div class="h4 card-text">Flat tire</div>
                 <div class="card-buttons">
-                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    <svg class="report-accept" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                          width="30px" height="30px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
 <g>
     <polygon class="report-accept" points="25.707,46 49.707,21.854 48.293,20.366 25,43.623 13.707,32.312 12.293,33.863 24.293,46 	"/>
@@ -82,7 +82,7 @@
 </g>
 </svg>
 
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<svg class="report-decline" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
      width="30px" height="30px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
 <g>
     <polygon class="report-decline" points="18.335,42.449 19.755,43.858 32.002,31.519 44.341,43.766 45.749,42.346 33.41,30.1 45.657,17.76 44.237,16.351
@@ -100,7 +100,7 @@
             <div class="text-report-card card card-1">
                 <div class="h4 card-text">Broken lights</div>
                 <div class="card-buttons">
-                    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    <svg class="report-accept" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                          width="30px" height="30px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
 <g>
     <polygon class="report-accept" points="25.707,46 49.707,21.854 48.293,20.366 25,43.623 13.707,32.312 12.293,33.863 24.293,46 	"/>
@@ -113,7 +113,7 @@
 </g>
 </svg>
 
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<svg class="report-decline" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
      width="30px" height="30px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
 <g>
     <polygon class="report-decline" points="18.335,42.449 19.755,43.858 32.002,31.519 44.341,43.766 45.749,42.346 33.41,30.1 45.657,17.76 44.237,16.351

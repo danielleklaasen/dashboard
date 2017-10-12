@@ -9,6 +9,7 @@ body,html{
   font: normal 100% $base-font-family; /* default weight (normal) browser default size (16 px) */
 
   background-color: $secondary-color;
+  overflow-x: hidden;
 }
 
 .top-space{

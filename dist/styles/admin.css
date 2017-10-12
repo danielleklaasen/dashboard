@@ -8,7 +8,8 @@ body, html {
   height: 100vh;
   font: normal 100% "Montserrat", sans-serif;
   /* default weight (normal) browser default size (16 px) */
-  background-color: #f5f5f5; }
+  background-color: #f5f5f5;
+  overflow-x: hidden; }
 
 .top-space {
   margin-top: 80px; }
@@ -116,7 +117,12 @@ Multiply your letter size by 1.618 and you will get perfect line height.
     .card-buttons svg .report-accept {
       fill: #23c6ab; }
     .card-buttons svg .report-decline {
-      fill: #f29f8c; }
+      fill: #ef7e64; }
+
+.report-delete {
+  font-size: 1.3em;
+  cursor: pointer;
+  color: #ef7e64; }
 
 .container {
   width: 100%; }
@@ -147,7 +153,7 @@ Multiply your letter size by 1.618 and you will get perfect line height.
     margin-right: 2rem; }
 
 #topbar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   background-color: #ffffff;
@@ -365,6 +371,10 @@ a.open-search.icon.icon-basic-magnifier {
   border-radius: 2px;
   height: 200px;
   width: 280px; }
+  .card.card-decline {
+    background: rgba(255, 234, 229, 0.1); }
+  .card.card-accept {
+    background: rgba(149, 249, 221, 0.1); }
 
 .card-1 {
   box-shadow: 0 1px 3px rgba(42, 48, 61, 0.12), 0 1px 2px rgba(42, 48, 61, 0.24);

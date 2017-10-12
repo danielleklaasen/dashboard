@@ -5,6 +5,12 @@
   height: 200px;
  // margin: 1rem 2rem 1rem 0;
   width: 280px;
+  &.card-decline{
+    background: rgba($accent-color-2, 0.1);
+  }
+  &.card-accept{
+    background: rgba($accent-color, 0.1);
+  }
 }
 
 .card-1 {
@@ -62,7 +68,7 @@
   }
 }
 
-.text-report-card{
+.text-report-card, {
   @include flexbox();
   @include flex-direction(column);
   @include justify-content(space-around);

@@ -40,8 +40,14 @@
   @include align-items(center);
   cursor: pointer;
   background-color: $primary-color;
+  &:nth-child(odd){
+    .card-number{
+      color: $accent-color-2;
+    }
+  }
   .card-text{
     color: $base-color;
+
   }
   .card-number{
     @include base-font();

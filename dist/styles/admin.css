@@ -359,6 +359,8 @@ a.open-search.icon.icon-basic-magnifier {
   align-items: center;
   cursor: pointer;
   background-color: #2a303d; }
+  .text-number-card:nth-child(odd) .card-number {
+    color: #FFEEE5; }
   .text-number-card .card-text {
     color: #ffffff; }
   .text-number-card .card-number {

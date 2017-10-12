@@ -3,32 +3,56 @@
   height: $topbar-height;
   width: 100%;
   border-bottom: 1px solid $secondary-color;
+
   .wrapper{
+
+    height: $topbar-height;
     @include flexbox();
     @include flex-direction(row);
     @include align-items(center);
     @include justify-content(space-between);
-    padding: 0 3vw 0 9.5vw;
-    .icons-right{
-      @include flexbox();
-      @include flex-direction(row);
+  }
+  //.wrapper{
+  //  @include flexbox();
+  //  @include flex-direction(row);
+  //  @include align-items(center);
+  //  @include justify-content(space-between);
+  //  padding: 0 3vw 0 9.5vw;
+  //  .icons-right{
+  //    @include flexbox();
+  //    @include flex-direction(row);
+  //    margin-top: 2px;
+  //    .notifications{
+  //      margin-top: 2px;
+  //      margin-right: 20px;
+  //      font-size: 1.4em;
+  //    }
+  //    .profile{
+  //      border-radius: 50%;
+  //      width: 25px;
+  //      height: 25px;
+  //      background-color: $primary-color;
+  //    }
+  //  }
+  //
+  //}
+  .icons-right{
+    @include flexbox();
+    @include flex-direction(row);
+    margin-top: 2px;
+    .notifications{
       margin-top: 2px;
-      .notifications{
-        margin-top: 2px;
-        margin-right: 20px;
-        font-size: 1.4em;
-      }
-      .profile{
-        border-radius: 50%;
-        width: 25px;
-        height: 25px;
-        background-color: $primary-color;
-      }
+      margin-right: 20px;
+      font-size: 1.4em;
     }
-
+    .profile{
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      background-color: $primary-color;
+    }
   }
 }
-
 a.open-search.icon.icon-basic-magnifier{
   margin-top: 6px;
   font-size: 1.4em;

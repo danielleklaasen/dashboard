@@ -36,7 +36,7 @@ $topbar-height: 50px;
 $sidebar-width: 300px;
 $sidebar-hidden: 70px;
 $sidebar-width-small: $sidebar-width - $sidebar-hidden;
-$content-width: 90vw;
+//$content-width: 100% - $sidebar-hidden;
 $content-padding: 2.5vw;
 
 @import "../modules/all";

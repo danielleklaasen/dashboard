@@ -11,11 +11,3 @@ body,html{
   background-color: $secondary-color;
 }
 
-.container{
-  @include flexbox();
-  @include flex-direction(row);
-  @include justify-content(flex-end);
-}
-.wrapper{
-  width: $content-width;
-}

@@ -1,3 +1,18 @@
+/********************************************************************************
+
+ TABLE OF CONTENTS
+
+    Sidebar
+    Open/close handler Search window
+
+ ********************************************************************************/
+
+
+/********************************************************************************
+
+ SIDEBAR
+
+ ********************************************************************************/
 
 
 $(document).on('mouseover','#sidebar', function(){
@@ -7,18 +22,31 @@ $(document).on('mouseleave','#sidebar', function(){
     fnAnimateSidebarOut();
 });
 
+var sidebar = $("#sidebar");
+
 var fnAnimateSidebarIn = function (){
-    $( "#sidebar" ).animate({
-        left: "0"
-    }, 200);
+    if (!sidebar.hasClass('open')){
+        // open sidebar
+        $("#sidebar").addClass('open');
+        console.log('open sidebar');
+    }
 };
 
 var fnAnimateSidebarOut = function (){
-    $( "#sidebar" ).animate({
-        left: "-23vw"
-    }, 100);
+    if (sidebar.hasClass('open')){
+        // close sidebar
+        $("#sidebar").removeClass('open');
+        console.log('close sidebar');
+    }
+
 
 };
+
+/********************************************************************************
+
+ SEARCH
+
+ ********************************************************************************/
 
 $(document).on('click','.close-search', function(){
     fnCloseSearch();

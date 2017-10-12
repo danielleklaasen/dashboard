@@ -33,7 +33,9 @@ $fixed-line-height: $base-line-height;
 
 // Size variables
 $topbar-height: 50px;
-$sidebar-width: 30vw;
+$sidebar-width: 300px;
+$sidebar-hidden: 70px;
+$sidebar-width-small: $sidebar-width - $sidebar-hidden;
 $content-width: 90vw;
 $content-padding: 2.5vw;
 

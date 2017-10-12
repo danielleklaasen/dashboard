@@ -1,11 +1,16 @@
 #sidebar{
   background-color: rgba($primary-color, 0.9);
-  width: $sidebar-width;
+  width: $sidebar-width; // declared in base
   position: absolute;
   top:0;
-  left: -23vw;
+  // left: -23vw;
+  left: -$sidebar-width-small;
   height: 100%;
   color: $base-color;
+  transition: 0.5s left;
+  &.open{
+    left:0;
+  }
   header{
     width: 100%;
     background-color: rgba($primary-color, 0.7);
@@ -29,11 +34,17 @@
     border-bottom: 1px solid $primary-color;
     transition: 0.2s;
     &:hover{
-      color: $base-color;
+      color: $accent-color;
       cursor: pointer;
       opacity: 0.8;
+      .btn-square{
+        .icon{
+          color: $accent-color;
+        }
+      }
     }
     &.active{
+      color: $accent-color;
       .btn-square{
         background-color: $accent-color;
         .icon{

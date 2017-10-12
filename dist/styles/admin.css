@@ -153,12 +153,15 @@ Multiply your letter size by 1.618 and you will get perfect line height.
 
 #sidebar {
   background-color: rgba(42, 48, 61, 0.9);
-  width: 30vw;
+  width: 300px;
   position: absolute;
   top: 0;
-  left: -23vw;
+  left: -230px;
   height: 100%;
-  color: #ffffff; }
+  color: #ffffff;
+  transition: 0.5s left; }
+  #sidebar.open {
+    left: 0; }
   #sidebar header {
     width: 100%;
     background-color: rgba(42, 48, 61, 0.7);
@@ -214,13 +217,17 @@ Multiply your letter size by 1.618 and you will get perfect line height.
     border-bottom: 1px solid #2a303d;
     transition: 0.2s; }
     #sidebar .menu-item:hover {
-      color: #ffffff;
+      color: #9effd9;
       cursor: pointer;
       opacity: 0.8; }
-    #sidebar .menu-item.active .btn-square {
-      background-color: #9effd9; }
-      #sidebar .menu-item.active .btn-square .icon {
-        color: #2a303d; }
+      #sidebar .menu-item:hover .btn-square .icon {
+        color: #9effd9; }
+    #sidebar .menu-item.active {
+      color: #9effd9; }
+      #sidebar .menu-item.active .btn-square {
+        background-color: #9effd9; }
+        #sidebar .menu-item.active .btn-square .icon {
+          color: #2a303d; }
     #sidebar .menu-item .btn-square .icon {
       color: #ffffff;
       padding: 6px 0 0 6px; }

@@ -67,10 +67,6 @@
   @include flex-direction(column);
   @include justify-content(space-around);
   @include align-items(center);
-  .card-buttons{
-    @include flexbox();
-    @include flex-direction(row);
-  }
 }
 
 .vertical-cards{

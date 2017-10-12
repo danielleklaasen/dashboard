@@ -1,6 +1,6 @@
 <aside id="sidebar">
     <header>
-        <a href="#" class="h1 logo">Bike Repair</a>
+        <a href="#" class="h1 logo open-home">Bike Repair</a>
     </header>
     <div class="menu-item active open-home">
         <p>Dashboard</p>

@@ -1,5 +1,5 @@
 #topbar{
-  z-index: 900;
+  z-index: 800;
 }
 #sidebar{
   z-index: 900;
@@ -10,4 +10,8 @@
   &.open{
     z-index: 200;
   }
+}
+
+.search-wdw{
+  z-index: 1000;
 }

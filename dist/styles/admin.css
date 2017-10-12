@@ -94,6 +94,30 @@ Multiply your letter size by 1.618 and you will get perfect line height.
 .close:after {
   transform: rotate(-45deg); }
 
+.card-buttons {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-pack: distribute;
+  -webkit-justify-content: space-around;
+  -moz-justify-content: space-around;
+  justify-content: space-around; }
+  .card-buttons svg {
+    cursor: pointer; }
+    .card-buttons svg .report-accept {
+      fill: #23c6ab; }
+    .card-buttons svg .report-decline {
+      fill: #f29f8c; }
+
 .container {
   width: 100%; }
 
@@ -182,7 +206,7 @@ a.open-search.icon.icon-basic-magnifier {
 #sidebar {
   background-color: rgba(42, 48, 61, 0.95);
   width: 300px;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: -230px;
   height: 100%;
@@ -245,17 +269,17 @@ a.open-search.icon.icon-basic-magnifier {
     border-bottom: 1px solid #2a303d;
     transition: 0.2s; }
     #sidebar .menu-item:hover {
-      color: #9effd9;
+      color: #95f9dd;
       cursor: pointer;
       opacity: 0.8; }
       #sidebar .menu-item:hover .btn-square .icon {
-        color: #9effd9; }
+        color: #95f9dd; }
       #sidebar .menu-item:hover .btn-square .close:before, #sidebar .menu-item:hover .btn-square .close:after {
-        background-color: #9effd9; }
+        background-color: #95f9dd; }
     #sidebar .menu-item.active {
-      color: #9effd9; }
+      color: #95f9dd; }
       #sidebar .menu-item.active .btn-square {
-        background-color: #9effd9; }
+        background-color: #95f9dd; }
         #sidebar .menu-item.active .btn-square .icon {
           color: #2a303d; }
     #sidebar .menu-item .btn-square {
@@ -384,7 +408,7 @@ a.open-search.icon.icon-basic-magnifier {
   align-items: center;
   cursor: pointer; }
   .text-number-card:nth-child(odd) .card-number {
-    color: #FFEEE5; }
+    color: #ffeae5; }
   .text-number-card .card-text {
     color: #ffffff; }
   .text-number-card .card-number {
@@ -392,7 +416,7 @@ a.open-search.icon.icon-basic-magnifier {
     font-weight: 200;
     color: #2a303d;
     font-size: 2.2em;
-    color: #9effd9; }
+    color: #95f9dd; }
 
 .dark-cards .card {
   background-color: #2a303d; }
@@ -418,18 +442,6 @@ a.open-search.icon.icon-basic-magnifier {
   -webkit-align-items: center;
   -moz-align-items: center;
   align-items: center; }
-  .text-report-card .card-buttons {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-direction: normal;
-    -webkit-box-orient: horizontal;
-    -webkit-flex-direction: row;
-    -moz-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row; }
 
 .vertical-cards .card {
   height: 250px;
@@ -445,7 +457,7 @@ a.open-search.icon.icon-basic-magnifier {
   display: none; }
 
 #topbar {
-  z-index: 900; }
+  z-index: 800; }
 
 #sidebar {
   z-index: 900; }
@@ -454,6 +466,9 @@ a.open-search.icon.icon-basic-magnifier {
   z-index: 0; }
   .wdw.open {
     z-index: 200; }
+
+.search-wdw {
+  z-index: 1000; }
 
 @font-face {
   font-family: "linea-basic-10";

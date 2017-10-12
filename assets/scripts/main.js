@@ -14,6 +14,12 @@
 
  ********************************************************************************/
 
+var fnOpenWdw = function (name) {
+    var sWdw = $('.' + name);
+    sWdw.addClass('open');
+    sWdw.fadeIn();
+};
+
 // open-report-wdw
 $(document).on('click','.open-report-wdw', function(){
     fnOpenReportWdw();
@@ -21,10 +27,7 @@ $(document).on('click','.open-report-wdw', function(){
 
 var fnOpenReportWdw = function (){
     fnCloseAllWdws();
-    var sReport = $('.report-wdw');
-    sReport.addClass('open');
-    sReport.fadeIn();
-
+    fnOpenWdw('report-wdw');
     fnSetActiveMenuItem('open-report-wdw');
 };
 
@@ -34,10 +37,8 @@ $(document).on('click','.open-archive-wdw', function(){
 });
 
 var fnOpenArchiveWdw = function (){
-    var sWdw = $('.archive-wdw');
-    sWdw.addClass('open');
-    sWdw.fadeIn();
-
+    fnCloseAllWdws();
+    fnOpenWdw('archive-wdw');
     fnSetActiveMenuItem('open-archive-wdw');
 };
 
@@ -51,6 +52,7 @@ $(document).on('click','.open-home', function(){
 var fnOpenHomeWdw = function (){
     // close all windows, home page is always open (main html)
     fnCloseAllWdws();
+    fnOpenWdw('home-wdw');
     fnSetActiveMenuItem('open-home');
 };
 
@@ -64,6 +66,8 @@ var fnSetActiveMenuItem = function (activeMenuItem) {
     $('.menu-item').removeClass('active');
     $('.' + activeMenuItem).addClass('active');
 };
+
+fnOpenHomeWdw();
 /********************************************************************************
 
  SIDEBAR

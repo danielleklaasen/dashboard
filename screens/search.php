@@ -1,4 +1,4 @@
 <div class="search-wdw">
     <div class="close-search close"></div>
-    <h1>Search...</h1>
+    <input id="search-input" class="big-input" type="text" name="search" placeholder="Search..">
 </div>

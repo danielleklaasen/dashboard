@@ -1,0 +1,17 @@
+.big-input{
+  width: 80vw;
+  max-width: 800px;
+  height: 100px;
+  font-size: 4em;
+  @include base-font();
+  letter-spacing: -4px;
+  border:0;
+  border-bottom: 1px solid $primary-color;
+  background-color: transparent;
+  @include placeholder {
+    color: $primary-color;
+  }
+  &:focus{
+    outline: none;
+  }
+}

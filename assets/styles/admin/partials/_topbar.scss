@@ -9,10 +9,6 @@
     @include align-items(center);
     @include justify-content(space-between);
     padding: 0 3vw 0 9.5vw;
-    .search{
-      margin-top: 6px;
-      font-size: 1.4em;
-    }
     .icons-right{
       @include flexbox();
       @include flex-direction(row);
@@ -31,4 +27,9 @@
     }
 
   }
+}
+
+a.open-search.icon.icon-basic-magnifier{
+  margin-top: 6px;
+  font-size: 1.4em;
 }

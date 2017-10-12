@@ -6,7 +6,13 @@
 }
 
 @mixin base-font() {
-  font-family: $base-font-family;
-  font-weight: $base-font-weight;
+  font-family: $base-font-family; // defined in partials/base
+  font-weight: $base-font-weight; // defined in partials/base
+}
 
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content}
+  :-moz-placeholder           {@content}
+  ::-moz-placeholder          {@content}
+  :-ms-input-placeholder      {@content}
 }

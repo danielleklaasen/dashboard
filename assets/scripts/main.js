@@ -28,7 +28,6 @@ var fnAnimateSidebarIn = function (){
     if (!sidebar.hasClass('open')){
         // open sidebar
         $("#sidebar").addClass('open');
-        console.log('open sidebar');
     }
 };
 
@@ -36,7 +35,6 @@ var fnAnimateSidebarOut = function (){
     if (sidebar.hasClass('open')){
         // close sidebar
         $("#sidebar").removeClass('open');
-        console.log('close sidebar');
     }
 
 
@@ -65,4 +63,5 @@ var fnOpenSearch = function (){
         .css("display", "flex")
         .hide()
         .fadeIn();
+    $( "#search-input" ).focus();
 };

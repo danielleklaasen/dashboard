@@ -1,0 +1,13 @@
+#topbar{
+  z-index: 900;
+}
+#sidebar{
+  z-index: 900;
+}
+
+.wdw{
+  z-index: 0;
+  &.open{
+    z-index: 200;
+  }
+}

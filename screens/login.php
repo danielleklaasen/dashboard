@@ -1,4 +1,4 @@
-<div class="login-wdw">
+<div class="wdw login-wdw">
   <!--  <div class="close-login close"></div> -->
-   <!-- <p>login</p> -->
+    <p>login</p>
 </div>

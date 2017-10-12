@@ -39,7 +39,6 @@
   @include justify-content(space-around);
   @include align-items(center);
   cursor: pointer;
-  background-color: $primary-color;
   &:nth-child(odd){
     .card-number{
       color: $accent-color-2;
@@ -57,3 +56,27 @@
 
   }
 }
+.dark-cards{
+  .card{
+    background-color: $primary-color;
+  }
+}
+
+.text-report-card{
+  @include flexbox();
+  @include flex-direction(column);
+  @include justify-content(space-around);
+  @include align-items(center);
+  .card-buttons{
+    @include flexbox();
+    @include flex-direction(row);
+  }
+}
+
+.vertical-cards{
+  .card{
+    height: 250px;
+    width: 200px;
+  }
+}
+

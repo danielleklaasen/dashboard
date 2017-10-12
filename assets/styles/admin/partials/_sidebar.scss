@@ -1,5 +1,5 @@
 #sidebar{
-  background-color: rgba($primary-color, 0.9);
+  background-color: rgba($primary-color, 0.95);
   width: $sidebar-width; // declared in base
   position: absolute;
   top:0;
@@ -41,6 +41,11 @@
         .icon{
           color: $accent-color;
         }
+        .close{
+          &:before, &:after{
+            background-color: $accent-color;
+          }
+        }
       }
     }
     &.active{
@@ -53,9 +58,25 @@
       }
     }
     .btn-square{
+      position: relative;
       .icon{
         color: $base-color;
         padding: 6px 0 0 6px;
+      }
+      .close{
+        top:5px;
+        left:0;
+        margin:0;
+        width: 20px;
+        height: 20px;
+        &:before, &:after{
+          background-color: $secondary-color;
+          height: 20px;
+          left: 14px;
+        }
+        &:hover{
+          opacity: 1;
+        }
       }
     }
   }

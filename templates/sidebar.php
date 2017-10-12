@@ -2,13 +2,17 @@
     <header>
         <a href="#" class="h1 logo">Bike Repair</a>
     </header>
-    <div class="menu-item active">
+    <div class="menu-item active open-home">
         <p>Dashboard</p>
         <div class="btn-square"><div class="icon icon-basic-home"></div></div>
     </div>
-    <div class="menu-item">
+    <div class="open-report-wdw menu-item">
         <p>Pending reports</p>
         <div class="btn-square"><div class="icon icon-basic-sheet-txt"></div></div>
+    </div>
+    <div class="menu-item">
+        <p>Declined reports</p>
+        <div class="btn-square"><div class="close"></div></div>
     </div>
     <div class="menu-item">
         <p>Archive</p>

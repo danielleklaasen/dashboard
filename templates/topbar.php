@@ -1,5 +1,5 @@
 
-<nav id="topbar">
+<nav id="topbar" class="container">
     <div class="wrapper">
         <a href="#" class="logo h1">Bike Repair</a>
         <a href="#" class="open-search icon icon-basic-magnifier"></a>

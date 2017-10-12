@@ -8,6 +8,7 @@
 @mixin base-font() {
   font-family: $base-font-family; // defined in partials/base
   font-weight: $base-font-weight; // defined in partials/base
+  color: $primary-color;
 }
 
 @mixin placeholder {

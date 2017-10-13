@@ -431,8 +431,7 @@ a.open-search.icon.icon-basic-magnifier {
 .card {
   background: #ffffff;
   border-radius: 2px;
-  height: 200px;
-  width: 280px; }
+  height: 200px; }
   .card.card-decline {
     border: 1px solid rgba(239, 126, 100, 0.5); }
   .card.card-accept {
@@ -517,7 +516,8 @@ a.open-search.icon.icon-basic-magnifier {
 
 .vertical-cards .card {
   height: 250px;
-  width: 200px; }
+  width: 100%;
+  max-width: 200px; }
 
 .wdw {
   width: 100%;

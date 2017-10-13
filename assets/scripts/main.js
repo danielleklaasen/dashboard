@@ -2,9 +2,16 @@
 
  TABLE OF CONTENTS
 
+    Touch events
     Navigation
     Sidebar
     Open/close handler Search window
+
+ ********************************************************************************/
+
+/********************************************************************************
+
+ TOUCH EVENTS
 
  ********************************************************************************/
 
@@ -83,6 +90,13 @@ fnOpenHomeWdw();
 $(document).on('mouseover','#sidebar', function(){
     fnOpenSidebar();
 });
+$(document).on('click','#sidebar', function(){
+    fnOpenSidebar();
+});
+$(document).on('touchstart','#sidebar', function(){
+    fnOpenSidebar();
+});
+
 $(document).on('mouseleave','#sidebar', function(){
     fnCloseSidebar();
 });

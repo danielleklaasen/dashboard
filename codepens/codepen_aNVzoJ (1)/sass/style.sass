@@ -1,0 +1,53 @@
+=flex-wrap-fix($flex-basis, $max-viewport-width: 2000px)
+  flex-grow: 1
+  flex-basis: $flex-basis
+  max-width: 100%
+  
+  $multiplier: 1
+  $current-width: 0px
+  
+  @while $current-width < $max-viewport-width
+    $current-width: $current-width + $flex-basis
+    $multiplier: $multiplier + 1
+    
+    @media (min-width: $flex-basis * $multiplier)
+      max-width: percentage(1 / $multiplier)
+
+ul
+  display: flex
+  flex-wrap: wrap
+
+li
+  // I want the width to be between the following two sizes
+  min-width: 40px
+  //max-width: 100px
+  // this keeps all the elements the same size
+  // **as long as they are on the same row**
+  // but I want them to all the same width everywhere
+  //flex: 1 0 0
+  
+  +flex-wrap-fix(100px)
+ 
+// demo styles
+
+ul, li
+  margin: 0
+  padding: 0
+  list-style: none
+
+ul
+  background-color: tomato
+
+li  
+  .content 
+    margin: .5em
+    background-color: darkgreen
+
+  // the image may have variable width, I want it to take the entire space calculated by flexbox
+  img
+    width: 100%
+    opacity: .5
+
+  figure, img
+    margin: 0
+    padding: 0

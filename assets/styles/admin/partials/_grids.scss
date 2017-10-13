@@ -15,8 +15,20 @@
   @include flexbox();
   @include flex-direction(row);
   @include justify-content(flex-start);
+  @include flex-wrap(wrap);
+
+  &.vertical-cards{
+    .card{
+      @include flex-wrap-fix($card-small-width);
+    }
+  }
   .card{
-    margin-right: 2rem;
+    flex: 1 0 0;
+    margin: 0 2rem 2rem 0;
+
+    @include flex-wrap-fix($card-width);
   }
 }
+
+
 

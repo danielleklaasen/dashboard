@@ -112,12 +112,8 @@ Multiply your letter size by 1.618 and you will get perfect line height.
   -webkit-justify-content: space-around;
   -moz-justify-content: space-around;
   justify-content: space-around; }
-  .card-buttons svg {
+  .card-buttons img {
     cursor: pointer; }
-    .card-buttons svg .report-accept {
-      fill: #23c6ab; }
-    .card-buttons svg .report-decline {
-      fill: #ef7e64; }
 
 .report-delete {
   font-size: 1.3em;
@@ -148,9 +144,75 @@ Multiply your letter size by 1.618 and you will get perfect line height.
   -ms-flex-pack: start;
   -webkit-justify-content: flex-start;
   -moz-justify-content: flex-start;
-  justify-content: flex-start; }
+  justify-content: flex-start;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+  .card-grid.vertical-cards .card {
+    flex-grow: 1;
+    flex-basis: 200px;
+    max-width: 100%; }
+    @media (min-width: 400px) {
+      .card-grid.vertical-cards .card {
+        max-width: 50%; } }
+    @media (min-width: 600px) {
+      .card-grid.vertical-cards .card {
+        max-width: 33.33333%; } }
+    @media (min-width: 800px) {
+      .card-grid.vertical-cards .card {
+        max-width: 25%; } }
+    @media (min-width: 1000px) {
+      .card-grid.vertical-cards .card {
+        max-width: 20%; } }
+    @media (min-width: 1200px) {
+      .card-grid.vertical-cards .card {
+        max-width: 16.66667%; } }
+    @media (min-width: 1400px) {
+      .card-grid.vertical-cards .card {
+        max-width: 14.28571%; } }
+    @media (min-width: 1600px) {
+      .card-grid.vertical-cards .card {
+        max-width: 12.5%; } }
+    @media (min-width: 1800px) {
+      .card-grid.vertical-cards .card {
+        max-width: 11.11111%; } }
+    @media (min-width: 2000px) {
+      .card-grid.vertical-cards .card {
+        max-width: 10%; } }
+    @media (min-width: 2200px) {
+      .card-grid.vertical-cards .card {
+        max-width: 9.09091%; } }
   .card-grid .card {
-    margin-right: 2rem; }
+    flex: 1 0 0;
+    margin: 0 2rem 2rem 0;
+    flex-grow: 1;
+    flex-basis: 280px;
+    max-width: 100%; }
+    @media (min-width: 560px) {
+      .card-grid .card {
+        max-width: 50%; } }
+    @media (min-width: 840px) {
+      .card-grid .card {
+        max-width: 33.33333%; } }
+    @media (min-width: 1120px) {
+      .card-grid .card {
+        max-width: 25%; } }
+    @media (min-width: 1400px) {
+      .card-grid .card {
+        max-width: 20%; } }
+    @media (min-width: 1680px) {
+      .card-grid .card {
+        max-width: 16.66667%; } }
+    @media (min-width: 1960px) {
+      .card-grid .card {
+        max-width: 14.28571%; } }
+    @media (min-width: 2240px) {
+      .card-grid .card {
+        max-width: 12.5%; } }
+    @media (min-width: 2520px) {
+      .card-grid .card {
+        max-width: 11.11111%; } }
 
 #topbar {
   position: fixed;
@@ -372,9 +434,9 @@ a.open-search.icon.icon-basic-magnifier {
   height: 200px;
   width: 280px; }
   .card.card-decline {
-    background: rgba(255, 234, 229, 0.1); }
+    border: 1px solid rgba(239, 126, 100, 0.5); }
   .card.card-accept {
-    background: rgba(149, 249, 221, 0.1); }
+    border: 1px solid #95f9dd; }
 
 .card-1 {
   box-shadow: 0 1px 3px rgba(42, 48, 61, 0.12), 0 1px 2px rgba(42, 48, 61, 0.24);

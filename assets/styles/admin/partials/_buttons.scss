@@ -37,14 +37,8 @@
   @include flexbox();
   @include flex-direction(row);
   @include justify-content(space-around);
-  svg{
+  img{
     cursor: pointer;
-    .report-accept{
-        fill: $success-color;
-    }
-    .report-decline{
-        fill: $warning-color;
-    }
   }
 }
 

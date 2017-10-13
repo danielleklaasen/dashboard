@@ -15,7 +15,7 @@
         <div class="btn-square"><div class="close"></div></div>
     </div> -->
     <div class="open-archive-wdw menu-item">
-        <p>Completed reports</p>
+        <p>Archive</p>
         <div class="btn-square"><div class="icon icon-basic-archive-full"></div></div>
     </div>
   <!--  <div class="menu-item">

@@ -42,6 +42,11 @@ var fnOpenArchiveWdw = function (){
     fnSetActiveMenuItem('open-archive-wdw');
 };
 
+// open-archive-wdw
+$(document).on('click','.menu-item', function(){
+    fnCloseSidebar();
+});
+
 
 
 // open-home-wdw
@@ -76,22 +81,22 @@ fnOpenHomeWdw();
 
 
 $(document).on('mouseover','#sidebar', function(){
-    fnAnimateSidebarIn();
+    fnOpenSidebar();
 });
 $(document).on('mouseleave','#sidebar', function(){
-    fnAnimateSidebarOut();
+    fnCloseSidebar();
 });
 
 var sidebar = $("#sidebar");
 
-var fnAnimateSidebarIn = function (){
+var fnOpenSidebar = function (){
     if (!sidebar.hasClass('open')){
         // open sidebar
         $("#sidebar").addClass('open');
     }
 };
 
-var fnAnimateSidebarOut = function (){
+var fnCloseSidebar = function (){
     if (sidebar.hasClass('open')){
         // close sidebar
         $("#sidebar").removeClass('open');

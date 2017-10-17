@@ -11,12 +11,12 @@
     },
     {
         "id": "58e7c02d0605c",
-         "title": "Flat tire",
-         "status": "0"
+        "title": "Flat tire",
+        "status": "0"
     },
     {
         "id": "58e7c082a802e",
         "title": "Broken lights",
-        "status": "1"
+        "status": "0"
     }
 ]

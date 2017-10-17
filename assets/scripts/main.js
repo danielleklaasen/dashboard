@@ -196,7 +196,7 @@ function fnGetReports(status){
                     if(iReportStatus==0){ // take only pending reports
 
                         //new object: add blueprint with data to html
-                        var sBlueprint = ' <div class="text-report-card card card-1">' +
+                        var sBlueprint = ' <div id="'+i+'" class="text-report-card card card-1">' +
                             '<div class="h4 card-text">'+sTitle+'</div>' +
                             '<div class="card-buttons"> ' +
                             '<img src="dist/images/arrows_circle_check.svg" alt="Accept" class="report-accept"> ' +
@@ -206,7 +206,7 @@ function fnGetReports(status){
                         $("#report-container").append( sBlueprint ); // add pending report to container
                     }else{
                         //new object: add blueprint with data to html
-                        var sBlueprint = '<div class="text-report-card card card-1 card-accept">' +
+                        var sBlueprint = '<div id="'+i+'" class="text-report-card card card-1 card-accept">' +
                             '<div class="h4 card-text">'+sTitle+'</div>' +
                             '<div class="report-delete icon icon-basic-trashcan"></div>' +
                             '</div>';
@@ -233,55 +233,117 @@ setInterval( function(){
  UPDATE
 
  ********************************************************************************/
+
 /********************************************************************************
-
- ACCEPT / DECLINE
-
+ Accept
  ********************************************************************************/
 
-// accept
 $(document).on('click','.report-accept', function(){
-    fnAcceptReport();
+    fnAcceptReport(this);
 });
 
-var fnAcceptReport = function (){
-    swal(
-        'Approved!',
-        'Report accepted.',
-        'success'
-    );
+var fnAcceptReport = function (that){
+    var sId= that.parentNode.parentNode.id;
+    var sStatus = "1"; // 0 = pending, 1 = approved, 2 = declined
+    fnSetReportStatus(sId,sStatus);
 };
 
-// decline
+/********************************************************************************
+ Decline
+ ********************************************************************************/
 $(document).on('click','.report-decline', function(){
-    fnDeclineReport();
+    fnDeclineReport(this);
 });
 
-var fnDeclineReport = function (){
-    swal(
-        'Declined',
-        'Report declined.',
-        'error'
-    );
+var fnDeclineReport = function (that){
+    var sId= that.parentNode.parentNode.id;
+    var sStatus = "2"; // 0 = pending, 1 = approved, 2 = declined
+    fnSetReportStatus(sId,sStatus);
 };
+
+/********************************************************************************
+ Feedback
+ ********************************************************************************/
+// remove card from interface
+var fnRemoveCard = function (id) {
+    $("#"+id).remove();
+};
+
+// communication to user
+var fnShowSuccessMsg = function(status){
+    if (status == 1){
+        swal(
+            'Approved!',
+            'Report accepted.',
+            'success'
+        );
+    }else{
+        swal(
+            'Declined',
+            'Report declined.',
+            'error'
+        );
+    }
+};
+
+/********************************************************************************
+ Backend
+ ********************************************************************************/
+var fnSetReportStatus = function(id, status){
+    var sUrlUpdate= "api/reports/api-update-report.php?id=" + id +"&status=" + status;
+
+    $.getJSON( sUrlUpdate, function( jData ){
+        if (jData.status=="ok"){
+            // update interface, remove card
+            fnRemoveCard(id);
+
+            // feedback to user depending on 1 approved vs 2 declined
+            fnShowSuccessMsg(status);
+
+
+        }
+    });
+};
+
 
 /********************************************************************************
 
  DELETE
 
  ********************************************************************************/
-
+/********************************************************************************
+ Accept
+ ********************************************************************************/
 $(document).on('click','.report-delete', function(){
-    fnDeleteReport();
+    fnDeleteReport(this);
 });
 
-var fnDeleteReport = function (){
-    swal(
-        'Deleted!',
-        'Report deleted.',
-        'success'
-    );
+var fnDeleteReport = function (that){
+    var sId= that.parentNode.id;
+    fnDeleteFromDataBase(sId);
+
 };
+
+var fnDeleteFromDataBase = function(id){
+    var sUrlDelete= "api/reports/api-delete-report.php?id=" + id;
+
+    $.getJSON( sUrlDelete, function( jData){
+        if( jData.status == "ok" ){
+            swal(
+                'Deleted!',
+                'Report deleted.',
+                'success'
+            );
+
+            // update interface, remove card
+            fnRemoveCard(id);
+            aLoadedReports.splice(id, 1);
+        }
+    });
+};
+/********************************************************************************
+ Backend
+ ********************************************************************************/
 
 /********************************************************************************************************
 

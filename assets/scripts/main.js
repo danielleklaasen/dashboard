@@ -48,14 +48,14 @@ var fnOpenArchiveWdw = function (){
     fnCloseAllWdws();
     fnOpenWdw('archive-wdw');
     fnSetActiveMenuItem('open-archive-wdw');
+    fnGetReports("archive");
+
 };
 
 // open-archive-wdw
 $(document).on('click','.menu-item', function(){
     fnCloseSidebar();
 });
-
-
 
 // open-home-wdw
 $(document).on('click','.open-home', function(){
@@ -155,13 +155,12 @@ var fnOpenSearch = function (){
 
 var aLoadedReports = [];
 var sUrlReports = "api/reports/api-get-reports.php";
-var iItemsFromDbLength = 0;
-var iSavedItemsLength = aLoadedReports.length;
+
+var iDataLength = 0; // start with 0 data items
 
 //connect to server and display all properties
 function fnGetReports(status){
     $.get( sUrlReports, function( sData ){
-
         if (!$.trim(sData)){
             //sData is empty
             //Don't continue do stuff with sData
@@ -171,7 +170,18 @@ function fnGetReports(status){
             //ready to convert sData to object
 
             var ajData = JSON.parse(sData);
-            iItemsFromDbLength = ajData.length;
+            iDataLength = ajData.length;
+
+            switch(status) {
+                case "pending":
+                    console.log("loading pending reports");
+                    break;
+                case "archive":
+                    console.log("loading archived reports");
+                    break;
+                default:
+                    break;
+            }
 
             for(var i = 0; i < ajData.length; i++){
                 var sIdReport = ajData[i].id;
@@ -183,34 +193,29 @@ function fnGetReports(status){
                 else{
                     var sTitle=ajData[i].title;
 
-                    switch(status) {
-                        case "pending":
-                            if(iReportStatus==0){ // take only pending reports
+                    if(iReportStatus==0){ // take only pending reports
 
-                                //new object: add blueprint with data to html
-                                var sBlueprint = ' <div class="text-report-card card card-1">' +
-                                    '<div class="h4 card-text">'+sTitle+'</div>' +
-                                    '<div class="card-buttons"> ' +
-                                    '<img src="dist/images/arrows_circle_check.svg" alt="Accept" class="report-accept"> ' +
-                                    '<img src="dist/images/arrows_circle_remove.svg" alt="Decline" class="report-decline"> ' +
-                                    '</div>' +
-                                    '</div>';
+                        //new object: add blueprint with data to html
+                        var sBlueprint = ' <div class="text-report-card card card-1">' +
+                            '<div class="h4 card-text">'+sTitle+'</div>' +
+                            '<div class="card-buttons"> ' +
+                            '<img src="dist/images/arrows_circle_check.svg" alt="Accept" class="report-accept"> ' +
+                            '<img src="dist/images/arrows_circle_remove.svg" alt="Decline" class="report-decline"> ' +
+                            '</div>' +
+                            '</div>';
+                        $("#report-container").append( sBlueprint ); // add pending report to container
+                    }else{
+                        //new object: add blueprint with data to html
+                        var sBlueprint = '<div class="text-report-card card card-1 card-accept">' +
+                            '<div class="h4 card-text">'+sTitle+'</div>' +
+                            '<div class="report-delete icon icon-basic-trashcan"></div>' +
+                            '</div>';
 
-                                $("#report-container").append( sBlueprint ); // add pending report to container
-                            }
-                            break;
-                        case "archive":
-                            console.log("getting archived reports");
-                            // add to archive
-                            break;
-                        default:
-                            break;
+                        $("#archive-container").append( sBlueprint ); // add pending report to container
                     }
 
-
-
-                    //add id to array
                     aLoadedReports.push(sIdReport);
+
                 }
             }
         }

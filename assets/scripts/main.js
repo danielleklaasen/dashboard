@@ -36,7 +36,7 @@ var fnOpenReportWdw = function (){
     fnCloseAllWdws();
     fnOpenWdw('report-wdw');
     fnSetActiveMenuItem('open-report-wdw');
-    fnGetReports();
+    fnGetReports("pending");
 };
 
 // open-archive-wdw
@@ -156,10 +156,10 @@ var fnOpenSearch = function (){
 var aLoadedReports = [];
 var sUrlReports = "api/reports/api-get-reports.php";
 var iItemsFromDbLength = 0;
-var iSavedItemsLenght = aLoadedReports.length;
+var iSavedItemsLength = aLoadedReports.length;
 
 //connect to server and display all properties
-function fnGetReports(){
+function fnGetReports(status){
     $.get( sUrlReports, function( sData ){
 
         if (!$.trim(sData)){
@@ -175,41 +175,39 @@ function fnGetReports(){
 
             for(var i = 0; i < ajData.length; i++){
                 var sIdReport = ajData[i].id;
+                var iReportStatus = ajData[i].status;
 
                 if ($.inArray(sIdReport, aLoadedReports) != -1) {
                     //the object ID is already in aIdProperties array
                 }
                 else{
                     var sTitle=ajData[i].title;
-                    //new object: add blueprint with data to html
-                    var sBlueprint = ' <div class="text-report-card card card-1">' +
-                        '<div class="h4 card-text">'+sTitle+'</div>' +
-                        '<div class="card-buttons"> ' +
-                        '<img src="dist/images/arrows_circle_check.svg" alt="Accept" class="report-accept"> ' +
-                        '<img src="dist/images/arrows_circle_remove.svg" alt="Decline" class="report-decline"> ' +
-                        '</div>' +
-                        '</div>';
 
-                    $("#report-container").append( sBlueprint );
+                    switch(status) {
+                        case "pending":
+                            if(iReportStatus==0){ // take only pending reports
 
-                    if(iItemsFromDbLength - 1 === aLoadedReports.length){ // when all new reports are added
-                        if(iSavedItemsLenght != 0){
-                            // show desktop notification in case it's not the first load request
-                            // otherwise you'll get notified about EVERY SINGLE item :'(
-                            var iNewReports = iItemsFromDbLength - iSavedItemsLenght; // calculate how many new reports are loaded
+                                //new object: add blueprint with data to html
+                                var sBlueprint = ' <div class="text-report-card card card-1">' +
+                                    '<div class="h4 card-text">'+sTitle+'</div>' +
+                                    '<div class="card-buttons"> ' +
+                                    '<img src="dist/images/arrows_circle_check.svg" alt="Accept" class="report-accept"> ' +
+                                    '<img src="dist/images/arrows_circle_remove.svg" alt="Decline" class="report-decline"> ' +
+                                    '</div>' +
+                                    '</div>';
 
-                            var sReports = "reports";
-                            if (iNewReports === 1){
-                                sReports = "report";
+                                $("#report-container").append( sBlueprint ); // add pending report to container
                             }
-
-                            var sNotificationTitle = iNewReports + " new "+sReports+" added!";
-
-                            fnShowNotification(sNotificationTitle, sReports); // set if its single or plural
-                        }
-
-                        iSavedItemsLenght = iItemsFromDbLength; // set number of saved items
+                            break;
+                        case "archive":
+                            console.log("getting archived reports");
+                            // add to archive
+                            break;
+                        default:
+                            break;
                     }
+
+
 
                     //add id to array
                     aLoadedReports.push(sIdReport);
@@ -221,7 +219,7 @@ function fnGetReports(){
 
 // refresh reports each 2 sec
 setInterval( function(){
-        fnGetReports();
+        fnGetReports("pending");
 }, 2000 );
 
 
@@ -338,3 +336,27 @@ function fnShowDesktopNotification(title) {
         };
     }
 }
+
+
+
+/*
+*   // NOTIFY HOW MANY NEW PENDING REPORTS
+ if(iItemsFromDbLength - 1 === aLoadedReports.length){ // only when all new reports are added
+ if(iSavedItemsLength != 0){
+ // show desktop notification in case it's not the first load request
+ // otherwise you'll get notified about EVERY SINGLE item :'(
+ var iNewReports = iItemsFromDbLength - iSavedItemsLength; // calculate how many new reports are loaded
+
+ var sReports = "reports";
+ if (iNewReports === 1){
+ sReports = "report";
+ }
+
+ var sNotificationTitle = iNewReports + " new "+sReports+" added!";
+
+ fnShowNotification(sNotificationTitle, sReports); // set if its single or plural
+ }
+
+ iSavedItemsLength = iItemsFromDbLength; // set number of saved items
+ }
+* */

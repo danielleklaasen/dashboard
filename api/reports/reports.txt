@@ -1,18 +1,22 @@
 [
     {
         "id": "58e7c00d2a5a0",
-        "title": "Broken chain"
+        "title": "Broken chain",
+        "status": "0"
     },
     {
         "id": "58e7c01c8f8ec",
-        "title": "Ripped saddle"
+        "title": "Ripped saddle",
+        "status": "0"
     },
     {
         "id": "58e7c02d0605c",
-         "title": "Flat tire"
+         "title": "Flat tire",
+         "status": "0"
     },
     {
         "id": "58e7c082a802e",
-        "title": "Broken lights"
+        "title": "Broken lights",
+        "status": "1"
     }
 ]

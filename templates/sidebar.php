@@ -8,7 +8,10 @@
     </div>
     <div class="open-report-wdw menu-item">
         <p>Pending reports</p>
-        <div class="btn-square"><div class="icon icon-basic-sheet-txt"></div></div>
+        <div class="btn-square">
+           <!-- <img src="dist/images/basic_sheet_txt.svg" alt="">-->
+            <div class="icon icon-basic-sheet-txt"></div>
+        </div>
     </div>
    <!-- <div class="menu-item">
         <p>Declined reports</p>

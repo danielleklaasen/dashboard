@@ -9,11 +9,11 @@
            <div class="text-report-card card card-1">
                 <div class="h4 card-text">{title}</div>
                 <div class="card-buttons">
-                    <img src="dist/images/arrows_circle_check.svg" alt="Accept" class="report-accept">
-                    <img src="dist/images/arrows_circle_remove.svg" alt="Decline" class="report-decline">
+                    <svg class="lnr lnr-checkmark-circle report-accept link"><use xlink:href="#lnr-checkmark-circle"></use></svg>
+                    <svg class="lnr lnr-cross-circle report-accept link"><use xlink:href="#lnr-cross-circle"></use></svg>
                 </div>
             </div>
-            -->
+-->
         </div>
     </div>
 </div>

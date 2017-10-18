@@ -2,12 +2,160 @@
 
  TABLE OF CONTENTS
 
+    Feedback to user
+
     Touch events
+
     Navigation
+
     Sidebar
-    Open/close handler Search window
+
+    Search
+
+    Read
+
+    Update
+
+    Delete
+
+    Desktop notifications
 
  ********************************************************************************/
+
+/********************************************************************************
+
+ FEEDBACK TO USER
+
+ ********************************************************************************/
+var bTimerIsSet = false;
+var messageTimer;
+function fnResetTimer() {
+    clearTimeout(messageTimer);
+}
+
+
+function fnShowMessage(message, type) {
+
+    var sMessage = $('#message');
+    sMessage.text(message);
+
+    switch(type) {
+        case "success":
+            sMessage.removeClass("error").addClass("success");
+            break;
+        case "error":
+            sMessage.className = "";
+            sMessage.removeClass("success").addClass("error");
+            break;
+        default:
+            sMessage.className = "";
+    }
+
+    sMessage.animate({
+        top: 0
+    }, 550);
+
+    // handeling multiple messages
+    // only call hide message, when the message has been shown for 2 s
+    if(!bTimerIsSet){
+        messageTimer = setTimeout(function(){ fnHideMessage(); }, 2000);
+        bTimerIsSet = true;
+    }else{
+        fnResetTimer();
+        messageTimer = setTimeout(function(){ fnHideMessage(); }, 2000);
+    }
+}
+
+function fnHideMessage(){
+    bTimerIsSet = false;
+        var topValue="-50px";
+        $('#message').animate({
+            top: topValue
+        }, 550);
+
+}
+
+
+/********************************************************************************************************
+ Desktop notifications
+ ********************************************************************************************************/
+
+// request permission on page load
+document.addEventListener('DOMContentLoaded', function () {
+    if (!Notification) {
+        console.log("Desktop notifications aren't available in your browser.");
+        return;
+    }
+    if (Notification.permission !== "granted"){
+        Notification.requestPermission();
+    }
+});
+
+var oSound = new Audio('audio/notification.mp3'); //o because Object
+
+var changeTitle;
+var iterations = 0;
+
+function fnShowNotification(title, report){
+    oSound.play();
+    var baseTitle = document.title;
+    var notificationTitle = "New "+report+" received"; // report is single or plural --> report(s)
+    changeTitle = setInterval(function(){
+        fnChangeTitle(baseTitle, notificationTitle);
+    }, 1000);
+    fnShowDesktopNotification(title);
+}
+
+function fnChangeTitle(baseTitle, notificationTitle) {
+    if (iterations < 6){
+        if(document.title === baseTitle){
+            document.title = notificationTitle;
+        }else{
+            document.title = baseTitle;
+        }
+    }else{
+        clearInterval(changeTitle);
+    }
+    iterations++;
+}
+
+function fnShowDesktopNotification(title) {
+    if (Notification.permission !== "granted"){
+        Notification.requestPermission();
+    }
+    else {
+        var notification = new Notification(title);
+
+        notification.onclick = function () {
+            // open report page on click
+            fnOpenReportWdw();
+        };
+    }
+}
+
+
+
+/*
+ *   // NOTIFY HOW MANY NEW PENDING REPORTS
+ if(iItemsFromDbLength - 1 === aLoadedReports.length){ // only when all new reports are added
+ if(iSavedItemsLength != 0){
+ // show desktop notification in case it's not the first load request
+ // otherwise you'll get notified about EVERY SINGLE item :'(
+ var iNewReports = iItemsFromDbLength - iSavedItemsLength; // calculate how many new reports are loaded
+
+ var sReports = "reports";
+ if (iNewReports === 1){
+ sReports = "report";
+ }
+
+ var sNotificationTitle = iNewReports + " new "+sReports+" added!";
+
+ fnShowNotification(sNotificationTitle, sReports); // set if its single or plural
+ }
+
+ iSavedItemsLength = iItemsFromDbLength; // set number of saved items
+ }
+ * */
 
 /********************************************************************************
 
@@ -36,7 +184,7 @@ var fnOpenReportWdw = function (){
     fnCloseAllWdws();
     fnOpenWdw('report-wdw');
     fnSetActiveMenuItem('open-report-wdw');
-    fnGetReports("pending");
+    fnGetPendingReports();
 };
 
 // open-archive-wdw
@@ -48,8 +196,7 @@ var fnOpenArchiveWdw = function (){
     fnCloseAllWdws();
     fnOpenWdw('archive-wdw');
     fnSetActiveMenuItem('open-archive-wdw');
-    fnGetReports("archive");
-
+    fnGetArchivedReports();
 };
 
 // open-archive-wdw
@@ -153,11 +300,11 @@ var fnOpenSearch = function (){
 
  ********************************************************************************/
 
+/********************************************************************************
+ All
+ ********************************************************************************/
 var aLoadedReports = [];
 var sUrlReports = "api/reports/api-get-reports.php";
-
-var iDataLength = 0; // start with 0 data items
-
 //connect to server and display all properties
 function fnGetReports(status){
     $.get( sUrlReports, function( sData ){
@@ -170,14 +317,13 @@ function fnGetReports(status){
             //ready to convert sData to object
 
             var ajData = JSON.parse(sData);
-            iDataLength = ajData.length;
 
             switch(status) {
                 case "pending":
-                    console.log("loading pending reports");
+                  //  console.log("loading pending reports");
                     break;
                 case "archive":
-                    console.log("loading archived reports");
+                  //  console.log("loading archived reports");
                     break;
                 default:
                     break;
@@ -205,11 +351,21 @@ function fnGetReports(status){
                             '</div>';
                         $("#report-container").append( sBlueprint ); // add pending report to container
                     }else{
-                        //new object: add blueprint with data to html
-                        var sBlueprint = '<div id="'+i+'" class="text-report-card card card-1 card-accept">' +
-                            '<div class="h4 card-text">'+sTitle+'</div>' +
-                            '<div class="report-delete icon icon-basic-trashcan"></div>' +
-                            '</div>';
+
+                        if(iReportStatus==1){
+                            //new object: add blueprint with data to html
+                            var sBlueprint = '<div id="'+i+'" class="text-report-card card card-1 card-accept">' +
+                                '<div class="h4 card-text">'+sTitle+'</div>' +
+                                '<svg class="report-delete lnr lnr-trash link"><use xlink:href="#lnr-trash"></use></svg>' +
+                                '</div>';
+                        }else{
+                            //new object: add blueprint with data to html
+                            var sBlueprint = '<div id="'+i+'" class="text-report-card card card-1 card-decline">' +
+                                '<div class="h4 card-text">'+sTitle+'</div>' +
+                                '<svg class="report-delete lnr lnr-trash link"><use xlink:href="#lnr-trash"></use></svg>' +
+                                '</div>';
+
+                        }
 
                         $("#archive-container").append( sBlueprint ); // add pending report to container
                     }
@@ -222,10 +378,118 @@ function fnGetReports(status){
     });
 }
 
+/********************************************************************************
+ Pending
+ ********************************************************************************/
+
+var aLoadedPendingReports = [];
+var sUrlPendingReports = "api/reports/api-get-pending-reports.php";
+var iPendingReports = 0;
+
+var fnSetPendingReports = function(){
+    $('.pending-reports-num').text(iPendingReports);
+};
+
+var fnGetPendingReports = function (){
+    $.get( sUrlPendingReports, function( sData ){
+        if (!$.trim(sData)){
+            //sData is empty
+            //Don't continue do stuff with sData
+        }
+        else{
+            //sData is NOT empty
+            //ready to convert sData to object
+
+            var ajData = JSON.parse(sData);
+
+            for(var i = 0; i < ajData.length; i++){
+                var sIdReport = ajData[i].id;
+
+                if ($.inArray(sIdReport, aLoadedPendingReports) != -1) {
+                    //the object ID is already in aIdProperties array
+                }
+                else{
+                    var sTitle=ajData[i].title;
+
+                        //new object: add blueprint with data to html
+                        var sBlueprint = ' <div id="'+i+'" class="text-report-card card card-1">' +
+                            '<div class="h4 card-text">'+sTitle+'</div>' +
+                            '<div class="card-buttons">' +
+                            '<svg class="lnr lnr-checkmark-circle report-accept link"><use xlink:href="#lnr-checkmark-circle"></use></svg>' +
+                            '<svg class="lnr lnr-cross-circle report-accept link"><use xlink:href="#lnr-cross-circle"></use></svg>'+
+                            '</div>' +
+                            '</div>';
+
+
+                    $("#report-container").append( sBlueprint ); // appending to container
+
+                    aLoadedPendingReports.push(sIdReport);
+
+                }
+            }
+            iPendingReports = aLoadedPendingReports.length;
+            fnSetPendingReports();
+        }
+    });
+};
+
 // refresh reports each 2 sec
 setInterval( function(){
-        fnGetReports("pending");
+    fnGetPendingReports();
 }, 2000 );
+
+/********************************************************************************
+ Archive
+ ********************************************************************************/
+
+var aLoadedArchivedReports = [];
+var sUrlArchivedReports = "api/reports/api-get-archived-reports.php";
+
+var fnGetArchivedReports = function (){
+    $.get( sUrlArchivedReports, function( sData ){
+        if (!$.trim(sData)){
+            //sData is empty
+            //Don't continue do stuff with sData
+        }
+        else{
+            //sData is NOT empty
+            //ready to convert sData to object
+
+            var ajData = JSON.parse(sData);
+
+            for(var i = 0; i < ajData.length; i++){
+                var sIdReport = ajData[i].id;
+
+                if ($.inArray(sIdReport, aLoadedArchivedReports) != -1) {
+                    //the object ID is already in aIdProperties array
+                }
+                else{
+                    var iReportStatus = ajData[i].status;
+                    var sTitle=ajData[i].title;
+
+                    if(iReportStatus==1){
+                        //new object: add blueprint with data to html
+                        var sBlueprint = '<div id="'+i+'" class="text-report-card card card-1 card-accept">' +
+                            '<div class="h4 card-text">'+sTitle+'</div>' +
+                            '<svg class="report-delete lnr lnr-trash link"><use xlink:href="#lnr-trash"></use></svg>' +
+                            '</div>';
+                    }else{
+                        //new object: add blueprint with data to html
+                        var sBlueprint = '<div id="'+i+'" class="text-report-card card card-1 card-decline">' +
+                            '<div class="h4 card-text">'+sTitle+'</div>' +
+                            '<svg class="report-delete lnr lnr-trash link"><use xlink:href="#lnr-trash"></use></svg>' +
+                            '</div>';
+
+                    }
+
+                    $("#archive-container").append( sBlueprint ); // add report to container
+
+                    aLoadedArchivedReports.push(sIdReport);
+                }
+            }
+        }
+    });
+};
 
 
 /********************************************************************************
@@ -272,17 +536,9 @@ var fnRemoveCard = function (id) {
 // communication to user
 var fnShowSuccessMsg = function(status){
     if (status == 1){
-        swal(
-            'Approved!',
-            'Report accepted.',
-            'success'
-        );
+        fnShowMessage("Report accepted","success");
     }else{
-        swal(
-            'Declined',
-            'Report declined.',
-            'error'
-        );
+        fnShowMessage("Report declined","error");
     }
 };
 
@@ -329,11 +585,7 @@ var fnDeleteFromDataBase = function(id){
 
     $.getJSON( sUrlDelete, function( jData){
         if( jData.status == "ok" ){
-            swal(
-                'Deleted!',
-                'Report deleted.',
-                'success'
-            );
+            fnShowMessage("Report deleted!","success");
 
             // update interface, remove card
             fnRemoveCard(id);
@@ -344,86 +596,3 @@ var fnDeleteFromDataBase = function(id){
 /********************************************************************************
  Backend
  ********************************************************************************/
-
-/********************************************************************************************************
-
- DESKTOP NOTIFICATIONS
-
- ********************************************************************************************************/
-
-// request permission on page load
-document.addEventListener('DOMContentLoaded', function () {
-    if (!Notification) {
-        console.log("Desktop notifications aren't available in your browser.");
-        return;
-    }
-    if (Notification.permission !== "granted"){
-        Notification.requestPermission();
-    }
-});
-
-var oSound = new Audio('audio/notification.mp3'); //o because Object
-
-var changeTitle;
-var iterations = 0;
-
-function fnShowNotification(title, report){
-    oSound.play();
-    var baseTitle = document.title;
-    var notificationTitle = "New "+report+" received"; // report is single or plural --> report(s)
-    changeTitle = setInterval(function(){
-        fnChangeTitle(baseTitle, notificationTitle);
-    }, 1000);
-    fnShowDesktopNotification(title);
-}
-
-function fnChangeTitle(baseTitle, notificationTitle) {
-    if (iterations < 6){
-        if(document.title === baseTitle){
-            document.title = notificationTitle;
-        }else{
-            document.title = baseTitle;
-        }
-    }else{
-        clearInterval(changeTitle);
-    }
-    iterations++;
-}
-
-function fnShowDesktopNotification(title) {
-    if (Notification.permission !== "granted"){
-        Notification.requestPermission();
-    }
-    else {
-        var notification = new Notification(title);
-
-        notification.onclick = function () {
-           // open report page on click
-           fnOpenReportWdw();
-        };
-    }
-}
-
-
-
-/*
-*   // NOTIFY HOW MANY NEW PENDING REPORTS
- if(iItemsFromDbLength - 1 === aLoadedReports.length){ // only when all new reports are added
- if(iSavedItemsLength != 0){
- // show desktop notification in case it's not the first load request
- // otherwise you'll get notified about EVERY SINGLE item :'(
- var iNewReports = iItemsFromDbLength - iSavedItemsLength; // calculate how many new reports are loaded
-
- var sReports = "reports";
- if (iNewReports === 1){
- sReports = "report";
- }
-
- var sNotificationTitle = iNewReports + " new "+sReports+" added!";
-
- fnShowNotification(sNotificationTitle, sReports); // set if its single or plural
- }
-
- iSavedItemsLength = iItemsFromDbLength; // set number of saved items
- }
-* */

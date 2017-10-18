@@ -1,0 +1,22 @@
+#message{
+  background-color: $primary-color;
+  padding: 0 50px;
+  height: 50px;
+  position: fixed;
+  top: -50px;
+  //top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  @include base-font();
+  color: $base-color;
+  &.success{
+    background-color: $success-color;
+  }
+  &.error{
+    background-color: $warning-color;
+  }
+}

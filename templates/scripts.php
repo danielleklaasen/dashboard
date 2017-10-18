@@ -4,6 +4,6 @@
         crossorigin="anonymous"></script>
 <!--<script src="dist/scripts/lib/jquery.touch.min.js"></script>-->
 <script src="dist/scripts/main.min.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
 </body>
 </html>

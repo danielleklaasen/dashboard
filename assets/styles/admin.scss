@@ -6,20 +6,19 @@
 
 // Partials
 @import "admin/partials/reset";
-@import "admin/partials/general";
-@import "admin/partials/typography";
+
+@import "admin/partials/alerts";
 @import "admin/partials/buttons";
-@import "admin/partials/figures";
-@import "admin/partials/grids";
-@import "admin/partials/topbar";
-@import "admin/partials/sidebar";
-@import "admin/partials/search";
-@import "admin/partials/inputs";
 @import "admin/partials/cards";
+@import "admin/partials/figures";
+@import "admin/partials/general";
+@import "admin/partials/grids";
+@import "admin/partials/icons";
+@import "admin/partials/inputs";
+@import "admin/partials/search";
+@import "admin/partials/sidebar";
+@import "admin/partials/topbar";
+@import "admin/partials/typography";
 @import "admin/partials/windows";
 @import "admin/partials/z-index-values";
 
-// Third-party
-@import "vendor/icons";
-// @import "vendor/icons-arrow";
-// @import "vendor/jquery.ui.core";

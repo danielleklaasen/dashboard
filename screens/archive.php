@@ -6,7 +6,7 @@
         <br>
         <div id="archive-container" class="card-grid vertical-cards">
          <!--
-         BLUEPRINT ARCHIVE CARD
+         BLUEPRINT ARCHIVE CARD -->
          <div class="text-report-card card card-1 card-accept">
                 <div class="h4 card-text">Gears not working</div>
                 <div class="card-buttons">
@@ -14,8 +14,19 @@
             </div>
             </div>
 
+            <div class="text-report-card card card-1 card-decline">
+                <div class="h4 card-text">Flat tire</div>
+                <div class="card-buttons">
+                    <svg class="report-delete lnr lnr-trash link"><use xlink:href="#lnr-trash"></use></svg>
+                </div>
+            </div>
+
         </div>
- -->
+
+
+
+    </div>
+
     </div>
 </div>
 </div>

@@ -1,7 +1,6 @@
 <?php
 
 // SETTING UP PROJECT
-
 // insert meta
 require_once('templates/meta.php');
 
@@ -17,6 +16,8 @@ require_once('screens/search.php');
 require_once('screens/home.php');
 require_once('screens/reports.php');
 require_once('screens/archive.php');
+
+require_once('screens/profile.php');
 
 // insert footer
 require_once('templates/footer.php');

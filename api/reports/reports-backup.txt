@@ -18,5 +18,15 @@
         "id": "58e7c082a802e",
         "title": "Broken lights",
         "status": "0"
+    },
+    {
+        "id": "58e7c03d0606d",
+        "title": "Missing kickstand",
+        "status": "1"
+    },
+    {
+       "id": "58e7c028a802f",
+       "title": "Broken gears",
+       "status": "2"
     }
 ]

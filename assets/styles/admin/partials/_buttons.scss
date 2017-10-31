@@ -1,3 +1,40 @@
+%btn{
+  border: 1px solid $primary-color;
+  cursor: pointer;
+  width: 200px;
+  text-align: center;
+  @include base-font();
+  font-size:0.875em;
+  height:50px;
+}
+
+button, .btn{
+  @extend %btn; // here we load the btn defaults
+  background-color: $primary-color;
+  color: $base-color;
+  @include border-radius(2px);
+  line-height: 50px;
+  &:active, &:focus{
+    outline: none;
+  }
+}
+
+.btn-login{
+  margin-top: 15px;
+  max-width: 300px;
+  width: 100%;
+}
+.register-btn{
+  text-align: center;
+  margin-top: 20px;
+  font-size:0.9em;
+}
+.underline-disappear{
+  @include underline-from-center-disappear();
+  &:hover{
+    opacity: 1;
+  }
+}
 .btn-square{
   width: 30px;
   height: 30px;
@@ -45,7 +82,7 @@
   .pending-reports-num{
     position: absolute;
     top: -8px;
-    right: -8px;
+    left: -6px;
     background-color: $warning-color;
     width: 16px;
     height: 16px;

@@ -1,4 +1,6 @@
 @charset "UTF-8";
+/* PLACEHOLDER STYLING */
+/* Underline From Center */
 #message {
   background-color: #2a303d;
   padding: 0 50px;
@@ -19,6 +21,67 @@
     background-color: #23c6ab; }
   #message.error {
     background-color: #ef7e64; }
+
+button, .btn {
+  border: 1px solid #2a303d;
+  cursor: pointer;
+  width: 200px;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 200;
+  color: #2a303d;
+  font-size: 0.875em;
+  height: 50px; }
+
+button, .btn {
+  background-color: #2a303d;
+  color: #ffffff;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  border-radius: 2px;
+  line-height: 50px; }
+  button:active, button:focus, .btn:active, .btn:focus {
+    outline: none; }
+
+.btn-login {
+  margin-top: 15px;
+  max-width: 300px;
+  width: 100%; }
+
+.register-btn {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9em; }
+
+.underline-disappear {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  position: relative;
+  overflow: hidden; }
+  .underline-disappear:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #2a303d;
+    height: 1px;
+    -webkit-transition-property: left, right;
+    transition-property: left, right;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out; }
+  .underline-disappear:hover:before, .underline-disappear:focus:before, .underline-disappear:active:before {
+    left: 50%;
+    right: 50%; }
+  .underline-disappear:hover {
+    opacity: 1; }
 
 .btn-square {
   width: 30px;
@@ -72,7 +135,7 @@
   .notifications .pending-reports-num {
     position: absolute;
     top: -8px;
-    right: -8px;
+    left: -6px;
     background-color: #ef7e64;
     width: 16px;
     height: 16px;
@@ -191,6 +254,11 @@
   height: 250px;
   width: 100%;
   max-width: 200px; }
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  padding-left: 2.5%;
+  width: 97.5%; }
 
 * {
   margin: 0;
@@ -325,29 +393,163 @@ body, html {
   color: #2a303d; }
   .lnr.lnr-trash {
     color: #ef7e64; }
+  .lnr.lnr-light {
+    color: #ffffff; }
 
-.big-input {
+/*********************
+INPUTS
+*********************/
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+select,
+textarea,
+.field {
+  margin: 5px 0;
+  width: 100%;
+  max-width: 300px;
+  height: 46px;
+  border: 1px solid #2a303d;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  border-radius: 2px;
+  background-color: #ffffff;
+  color: #2a303d; }
+  input[type="text"] ::-webkit-input-placeholder,
+  input[type="password"] ::-webkit-input-placeholder,
+  input[type="datetime"] ::-webkit-input-placeholder,
+  input[type="datetime-local"] ::-webkit-input-placeholder,
+  input[type="date"] ::-webkit-input-placeholder,
+  input[type="month"] ::-webkit-input-placeholder,
+  input[type="time"] ::-webkit-input-placeholder,
+  input[type="week"] ::-webkit-input-placeholder,
+  input[type="number"] ::-webkit-input-placeholder,
+  input[type="email"] ::-webkit-input-placeholder,
+  input[type="url"] ::-webkit-input-placeholder,
+  input[type="search"] ::-webkit-input-placeholder,
+  input[type="tel"] ::-webkit-input-placeholder,
+  input[type="color"] ::-webkit-input-placeholder,
+  select ::-webkit-input-placeholder,
+  textarea ::-webkit-input-placeholder,
+  .field ::-webkit-input-placeholder {
+    color: #2a303d; }
+  input[type="text"] :-moz-placeholder,
+  input[type="password"] :-moz-placeholder,
+  input[type="datetime"] :-moz-placeholder,
+  input[type="datetime-local"] :-moz-placeholder,
+  input[type="date"] :-moz-placeholder,
+  input[type="month"] :-moz-placeholder,
+  input[type="time"] :-moz-placeholder,
+  input[type="week"] :-moz-placeholder,
+  input[type="number"] :-moz-placeholder,
+  input[type="email"] :-moz-placeholder,
+  input[type="url"] :-moz-placeholder,
+  input[type="search"] :-moz-placeholder,
+  input[type="tel"] :-moz-placeholder,
+  input[type="color"] :-moz-placeholder,
+  select :-moz-placeholder,
+  textarea :-moz-placeholder,
+  .field :-moz-placeholder {
+    color: #2a303d; }
+  input[type="text"] ::-moz-placeholder,
+  input[type="password"] ::-moz-placeholder,
+  input[type="datetime"] ::-moz-placeholder,
+  input[type="datetime-local"] ::-moz-placeholder,
+  input[type="date"] ::-moz-placeholder,
+  input[type="month"] ::-moz-placeholder,
+  input[type="time"] ::-moz-placeholder,
+  input[type="week"] ::-moz-placeholder,
+  input[type="number"] ::-moz-placeholder,
+  input[type="email"] ::-moz-placeholder,
+  input[type="url"] ::-moz-placeholder,
+  input[type="search"] ::-moz-placeholder,
+  input[type="tel"] ::-moz-placeholder,
+  input[type="color"] ::-moz-placeholder,
+  select ::-moz-placeholder,
+  textarea ::-moz-placeholder,
+  .field ::-moz-placeholder {
+    color: #2a303d; }
+  input[type="text"] :-ms-input-placeholder,
+  input[type="password"] :-ms-input-placeholder,
+  input[type="datetime"] :-ms-input-placeholder,
+  input[type="datetime-local"] :-ms-input-placeholder,
+  input[type="date"] :-ms-input-placeholder,
+  input[type="month"] :-ms-input-placeholder,
+  input[type="time"] :-ms-input-placeholder,
+  input[type="week"] :-ms-input-placeholder,
+  input[type="number"] :-ms-input-placeholder,
+  input[type="email"] :-ms-input-placeholder,
+  input[type="url"] :-ms-input-placeholder,
+  input[type="search"] :-ms-input-placeholder,
+  input[type="tel"] :-ms-input-placeholder,
+  input[type="color"] :-ms-input-placeholder,
+  select :-ms-input-placeholder,
+  textarea :-ms-input-placeholder,
+  .field :-ms-input-placeholder {
+    color: #2a303d; }
+  input[type="text"]:focus, input[type="text"]:active,
+  input[type="password"]:focus,
+  input[type="password"]:active,
+  input[type="datetime"]:focus,
+  input[type="datetime"]:active,
+  input[type="datetime-local"]:focus,
+  input[type="datetime-local"]:active,
+  input[type="date"]:focus,
+  input[type="date"]:active,
+  input[type="month"]:focus,
+  input[type="month"]:active,
+  input[type="time"]:focus,
+  input[type="time"]:active,
+  input[type="week"]:focus,
+  input[type="week"]:active,
+  input[type="number"]:focus,
+  input[type="number"]:active,
+  input[type="email"]:focus,
+  input[type="email"]:active,
+  input[type="url"]:focus,
+  input[type="url"]:active,
+  input[type="search"]:focus,
+  input[type="search"]:active,
+  input[type="tel"]:focus,
+  input[type="tel"]:active,
+  input[type="color"]:focus,
+  input[type="color"]:active,
+  select:focus,
+  select:active,
+  textarea:focus,
+  textarea:active,
+  .field:focus,
+  .field:active {
+    outline: none; }
+
+textarea {
+  background-color: transparent;
+  min-height: 150px; }
+
+#search-input {
+  border: 0;
+  border-bottom: 1px solid #2a303d;
+  background-color: transparent;
   width: 80vw;
-  max-width: 800px;
+  max-width: 600px;
   height: 100px;
   font-size: 4em;
   font-family: "Montserrat", sans-serif;
   font-weight: 200;
   color: #2a303d;
-  letter-spacing: -4px;
-  border: 0;
-  border-bottom: 1px solid #2a303d;
-  background-color: transparent; }
-  .big-input ::-webkit-input-placeholder {
-    color: #2a303d; }
-  .big-input :-moz-placeholder {
-    color: #2a303d; }
-  .big-input ::-moz-placeholder {
-    color: #2a303d; }
-  .big-input :-ms-input-placeholder {
-    color: #2a303d; }
-  .big-input:focus {
-    outline: none; }
+  letter-spacing: -4px; }
 
 .search-wdw {
   position: absolute;
@@ -540,6 +742,8 @@ body, html {
         width: 22px;
         height: 22px;
         background-color: #2a303d; }
+        #topbar .wrapper .icons-right .profile .lnr-user {
+          font-size: 15px; }
     #topbar .wrapper .lnr {
       font-size: 20px; }
 
@@ -565,7 +769,8 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 
 p, a {
   font-size: 1em;
-  font-weight: 200; }
+  font-weight: 200;
+  line-height: 1.618em; }
 
 a {
   font-family: 'Montserrat', sans-serif;
@@ -601,6 +806,42 @@ Multiply your letter size by 1.618 and you will get perfect line height.
   left: 0;
   display: none; }
 
+.login-wdw {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-image: url("../images/bikesgrey.jpg");
+  padding-top: 0;
+  background-size: cover;
+  background-position: 50%; }
+  .login-wdw .accent-color-overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(149, 249, 221, 0.8);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    justify-content: center; }
+    .login-wdw .accent-color-overlay .logo {
+      margin-bottom: 20px; }
+
 #topbar {
   z-index: 800; }
 
@@ -617,3 +858,6 @@ Multiply your letter size by 1.618 and you will get perfect line height.
 
 #message {
   z-index: 900900900900900900900; }
+
+.login-wdw {
+  z-index: 1000; }

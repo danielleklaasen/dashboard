@@ -1,17 +1,79 @@
-.big-input{
+/*********************
+INPUTS
+*********************/
+
+// setting up defaults
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+select,
+textarea,
+.field {
+  margin: 5px 0;
+  width: 100%;
+  max-width:300px;
+  height: 46px;
+  border: 1px solid $primary-color;
+  @include border-radius(2px);
+  background-color: $base-color;
+  color: $primary-color;
+  @include placeholder {
+    color: $primary-color;
+  }
+  // a focused input (or hovered on)
+  &:focus,
+  &:active {
+    outline: none;
+  } // end hover or focus
+
+  // error notification
+  &.error,
+  &.is-invalid {
+
+  } // end invalid input
+
+  // success notification
+  &.success,
+  &.is-valid {
+
+  } // end valid input
+
+} // end input defaults
+
+// spacing out the password (thx @murtaugh)
+input[type="password"] {
+  //letter-spacing: 0.3em;
+}
+
+// textareas
+
+textarea {
+  background-color: transparent;
+  min-height: 150px;
+  //line-height: 1.5em;
+  //padding-top: 5px;
+}
+
+
+#search-input{
+  border: 0;
+  border-bottom: 1px solid $primary-color;
+  background-color: transparent;
   width: 80vw;
-  max-width: 800px;
+  max-width: 600px;
   height: 100px;
   font-size: 4em;
   @include base-font();
   letter-spacing: -4px;
-  border:0;
-  border-bottom: 1px solid $primary-color;
-  background-color: transparent;
-  @include placeholder {
-    color: $primary-color;
-  }
-  &:focus{
-    outline: none;
-  }
 }

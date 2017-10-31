@@ -11,10 +11,11 @@
                 <div class="h4 card-text">Gears not working</div>
                 <div class="card-buttons">
              <svg class="report-delete lnr lnr-trash link"><use xlink:href="#lnr-trash"></use></svg>
-</div>
+            </div>
             </div>
 
         </div>
  -->
     </div>
+</div>
 </div>

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "118120091082",
+    "firebase_url": "https://bike-repair-app.firebaseio.com",
+    "project_id": "bike-repair-app",
+    "storage_bucket": "bike-repair-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118120091082:android:7755c475c58489eb",
+        "android_client_info": {
+          "package_name": "com.nativebaseboilerplate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "118120091082-ibfbdu2971jihdism5s5ukm2f1l16a9p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvbrTpnMpypyi0d1dgMQhmS811cGucrFI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

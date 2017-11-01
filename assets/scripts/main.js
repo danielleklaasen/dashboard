@@ -320,89 +320,6 @@ var fnOpenSearch = function (){
 
 /********************************************************************************
 
- READ
-
- ********************************************************************************/
-
-var ajReports;
-var aLoadedPendingReports = [];
-var aLoadedArchiveReports = [];
-
-var sUrlReports = "api/reports/api-get-reports.php";
-//connect to server and display all properties
-function fnGetReports(status){
-    $.get( sUrlReports, function( sData ){
-        if (!$.trim(sData)){
-            //sData is empty
-            //Don't continue do stuff with sData
-        }
-        else{
-            //sData is NOT empty
-            //ready to convert sData to object
-
-            ajReports = JSON.parse(sData);
-
-            for(var i = 0; i < ajReports.length; i++){
-                var sIdReport = ajReports[i].id;
-                var iReportStatus = ajReports[i].status;
-                var sTitle=ajReports[i].title;
-                switch(status) {
-                    case "pending":
-                        if(iReportStatus == 0){
-                            if ($.inArray(sIdReport, aLoadedPendingReports) != -1) {
-                                //the object ID is already in aIdProperties array
-                            }else{
-                                //new object: add blueprint with data to html
-                                var sBlueprint = ' <div id="'+i+'" class="text-report-card card card-1">' +
-                                    '<div class="h4 card-text">'+sTitle+'</div>' +
-                                    '<div class="card-buttons">' +
-                                    '<svg class="lnr lnr-checkmark-circle report-accept link"><use xlink:href="#lnr-checkmark-circle"></use></svg>' +
-                                    '<svg class="lnr lnr-cross-circle report-decline link"><use xlink:href="#lnr-cross-circle"></use></svg>'+
-                                    '</div>' +
-                                    '</div>';
-                                $("#report-container").append( sBlueprint ); // add pending report to container
-                                aLoadedPendingReports.push(sIdReport);
-                            }
-                        }
-                        break;
-                    case "archive":
-                        if ($.inArray(sIdReport, aLoadedArchiveReports) != -1) {
-                            //the object ID is already in aIdProperties array
-                        }else{
-                            if(iReportStatus==1){
-                                console.log("status 1");
-                                //new object: add blueprint with data to html
-                                var sBlueprint = '<div id="'+i+'" class="text-report-card card card-1 card-accept">' +
-                                    '<div class="h4 card-text">'+sTitle+'</div>' +
-                                    '<svg class="report-delete lnr lnr-trash link"><use xlink:href="#lnr-trash"></use></svg>' +
-                                    '</div>';
-                                $("#archive-container").append( sBlueprint ); // add pending report to container
-                                aLoadedArchiveReports.push(sIdReport);
-                            }
-                            if(iReportStatus==2){
-                                console.log("status 2");
-                                //new object: add blueprint with data to html
-                                var sBlueprint = '<div id="'+i+'" class="text-report-card card card-1 card-decline">' +
-                                    '<div class="h4 card-text">'+sTitle+'</div>' +
-                                    '<svg class="report-delete lnr lnr-trash link"><use xlink:href="#lnr-trash"></use></svg>' +
-                                    '</div>';
-                                $("#archive-container").append( sBlueprint ); // add pending report to container
-                                aLoadedArchiveReports.push(sIdReport);
-                            }
-
-
-                        }
-
-                        break;
-                    default:
-                        break;
-                }
-            }
-        }
-    });
-}
-/********************************************************************************
-
  DELETE
 
  ********************************************************************************/
@@ -456,6 +373,7 @@ var database = firebase.database();
 
 var iPendingReports = 0;
 var bFirstLoaded = false;
+var aLoadedReports = [];
 
 var bikesRef = database.ref('bikes');
 bikesRef.on('value', function(snapshot) {
@@ -463,27 +381,38 @@ bikesRef.on('value', function(snapshot) {
     sPendingReports.text(iPendingReports); // set number of pending reports in notification and dashboard
    // var sPendingReports = snapshot.numChildren();
     snapshot.forEach(function(childSnapshot) { // loop through report items
-        var childData = childSnapshot.val();
-        var sCompanyName = childData.companyName;
-        var aDamages = childData.damages;
-        var sKey = childData.bikeID;
-        var sStatus = childData.status;
-        switch(sStatus) {
-            case "pending":
-                fnAddPending(sKey, sCompanyName, aDamages);
 
-                iPendingReports++;
-                sPendingReports.text(iPendingReports); // set number of pending reports in notification and dashboard
-                break;
-            case "accepted":
-                console.log("loading accepted");
-                break;
-            case "declined":
-                console.log("loading declined");
-                break;
-            default:
-                console.log("default");
+        var childData = childSnapshot.val();
+        var sKey = childData.bikeID;
+
+        if ($.inArray(sKey, aLoadedReports) != -1) {
+            //the object ID is already in aIdProperties array
+        }else{
+            // report not loaded yet
+            var sCompanyName = childData.companyName;
+            var aDamages = childData.damages;
+
+            var sStatus = childData.status;
+            switch(sStatus) {
+                case "pending":
+                    fnAddPending(sKey, sCompanyName, aDamages);
+                    iPendingReports++;
+                    sPendingReports.text(iPendingReports); // set number of pending reports in notification and dashboard
+                    break;
+                case "accepted":
+                    fnAddAccepted(sKey, sCompanyName, aDamages);
+                    break;
+                case "declined":
+                    fnAddDeclined(sKey, sCompanyName, aDamages);
+                    break;
+                default:
+                // default code here
+            }
+
+            //add id to array
+            aLoadedReports.push(sKey);
         }
+
     });
     if(bFirstLoaded){
         fnShowNotification("New pending reports","report");
@@ -491,7 +420,8 @@ bikesRef.on('value', function(snapshot) {
     bFirstLoaded = true;
 });
 
-var fnAddPending = function(key, company, damage ){
+
+var fnFormatDamage = function(damage){
     var sDamage = "";
     if(damage){
         //reformatting damage array
@@ -511,6 +441,13 @@ var fnAddPending = function(key, company, damage ){
             }
         }
     }
+    return sDamage;
+};
+
+var fnAddPending = function(key, company, damage ){
+
+    var sDamage = fnFormatDamage(damage);
+
     //new object: add blueprint with data to html
     var sBlueprint = ' <div id="'+key+'" class="text-report-card card card-1">' +
         '<div class="h4 card-text">' +
@@ -523,6 +460,32 @@ var fnAddPending = function(key, company, damage ){
         '</div>';
 
     $("#report-container").append( sBlueprint ); // add pending report to container
+};
+
+var fnAddAccepted = function(key, company, damage){
+    var sDamage = fnFormatDamage(damage);
+    //new object: add blueprint with data to html
+    var sBlueprint = ' <div id="'+key+'" class="text-report-card card card-1 card-accept">' +
+        '<div class="h4 card-text">' +
+        '<p class="bold">Damaged part(s)</p>'+sDamage+'<br/><br/>' +
+        '<p class="bold">'+company+'</p>Bike id '+ key +'</div>' +
+        '<svg class="report-delete lnr lnr-trash link"><use xlink:href="#lnr-trash"></use></svg>' +
+        '</div>';
+
+    $("#archive-container").append( sBlueprint ); // add pending report to container
+};
+
+var fnAddDeclined = function(key, company, damage){
+    var sDamage = fnFormatDamage(damage);
+    //new object: add blueprint with data to html
+    var sBlueprint = ' <div id="'+key+'" class="text-report-card card card-1 card-decline">' +
+        '<div class="h4 card-text">' +
+        '<p class="bold">Damaged part(s)</p>'+sDamage+'<br/><br/>' +
+        '<p class="bold">'+company+'</p>Bike id '+ key +'</div>' +
+        '<svg class="report-delete lnr lnr-trash link"><use xlink:href="#lnr-trash"></use></svg>' +
+        '</div>';
+
+    $("#archive-container").append( sBlueprint ); // add pending report to container
 };
 
 
@@ -569,3 +532,19 @@ var fnRemoveCard = function (id) {
     $('#'+id).fadeOut();
 };
 
+
+/********************************************************************************
+ DELETE
+ ********************************************************************************/
+
+$(document).on('click','.report-delete', function(){
+    fnDeleteReport(this);
+});
+
+var fnDeleteReport = function (that){
+    var sId= that.parentNode.id;
+    fnShowMessage("Report deleted!","success");
+    // update interface, remove card
+    $(that).parents('.text-report-card').remove();
+    aLoadedReports.splice(sId, 1);
+};

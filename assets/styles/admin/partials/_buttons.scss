@@ -103,3 +103,28 @@ button, .btn{
   }
 }
 
+.more-btn{
+  margin-top: 3px;
+  background-color: $secondary-color;
+  //background-color: $accent-color;
+  border: 1px solid darken($secondary-color,0.8);
+  width: 32px;
+  height: 18px;
+  line-height: normal;
+  position: relative;
+  .circles-container{
+    position: absolute;
+    top:-3px;
+    left:0;
+    width: 30px;
+    .circle{
+      display: inline-block;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background-color: $primary-color;
+      margin: 0 1px;
+    }
+  }
+}
+

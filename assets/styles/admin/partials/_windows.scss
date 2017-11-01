@@ -14,10 +14,13 @@
   width: 100%;
   height: 100%;
   display: block;
-  background-image: url("../images/bikesgrey.jpg");
   padding-top: 0;
-  background-size: cover;
-  background-position: 50%;
+  //background-image: url("../images/bikesmobile.jpg");
+  @include breakpoint(tablet) {
+    background-image: url("../images/bikesgrey.jpg");
+    background-size: cover;
+    background-position: 50%;
+  }
   .accent-color-overlay{
     width: 100%;
     height: 100%;

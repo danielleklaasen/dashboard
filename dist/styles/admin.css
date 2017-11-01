@@ -1,6 +1,9 @@
 @charset "UTF-8";
 /* PLACEHOLDER STYLING */
 /* Underline From Center */
+/*********************
+BREAKPOINTS
+*********************/
 #message {
   background-color: #2a303d;
   padding: 0 50px;
@@ -279,10 +282,13 @@ button, .btn {
   width: 100%;
   max-width: 200px; }
 
-.login-form input[type="text"],
-.login-form input[type="password"] {
-  padding-left: 2.5%;
-  width: 97.5%; }
+.login-form {
+  width: 100%;
+  max-width: 300px; }
+  .login-form input[type="text"],
+  .login-form input[type="password"] {
+    padding-left: 2.5%;
+    width: 97.5%; }
 
 * {
   margin: 0;
@@ -623,7 +629,7 @@ textarea {
   left: -230px;
   height: 100%;
   color: #ffffff;
-  transition: 0.5s left; }
+  transition: 0.3s left; }
   #sidebar.open {
     left: 0; }
   #sidebar header {
@@ -837,10 +843,12 @@ Multiply your letter size by 1.618 and you will get perfect line height.
   width: 100%;
   height: 100%;
   display: block;
-  background-image: url("../images/bikesgrey.jpg");
-  padding-top: 0;
-  background-size: cover;
-  background-position: 50%; }
+  padding-top: 0; }
+  @media (min-width: 50em) {
+    .login-wdw {
+      background-image: url("../images/bikesgrey.jpg");
+      background-size: cover;
+      background-position: 50%; } }
   .login-wdw .accent-color-overlay {
     width: 100%;
     height: 100%;

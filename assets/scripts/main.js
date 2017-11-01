@@ -192,10 +192,6 @@ var fnOpenReportWdw = function (){
     fnCloseAllWdws();
     fnOpenWdw('report-wdw');
     fnSetActiveMenuItem('open-report-wdw');
-    //fnGetReports("pending");
-    setInterval(function(){
-       // fnGetReports("pending");
-    },2000);
 };
 
 // open-archive-wdw
@@ -211,8 +207,6 @@ var fnOpenArchiveWdw = function (){
     fnCloseAllWdws();
     fnOpenWdw('archive-wdw');
     fnSetActiveMenuItem('open-archive-wdw');
-   // fnGetArchivedReports();
-   // fnGetReports("archive");
 };
 
 // open-home-wdw
@@ -320,46 +314,6 @@ var fnOpenSearch = function (){
 
 /********************************************************************************
 
- DELETE
-
- ********************************************************************************/
-/********************************************************************************
- Accept
- ********************************************************************************/
-$(document).on('click','.report-delete', function(){
-    fnDeleteReport(this);
-});
-
-var fnDeleteReport = function (that){
-    fnDeleteFromDataBase(that);
-
-};
-
-var fnDeleteFromDataBase = function(that){
-    var sId= that.parentNode.id;
-    var sUrlDelete= "api/reports/api-delete-report.php?id=" + sId;
-
-    $.getJSON( sUrlDelete, function( jData){
-        if( jData.status == "ok" ){
-            fnShowMessage("Report deleted!","success");
-
-
-            // update interface, remove card
-            $(that).parents('.text-report-card').remove();
-
-
-            aLoadedArchiveReports.splice(sId, 1);
-        }
-    });
-};
-/********************************************************************************
- Backend
- ********************************************************************************/
-
-
-
-/********************************************************************************
-
  FIREBASE
 
  ********************************************************************************/
@@ -398,6 +352,7 @@ bikesRef.on('value', function(snapshot) {
                     fnAddPending(sKey, sCompanyName, aDamages);
                     iPendingReports++;
                     sPendingReports.text(iPendingReports); // set number of pending reports in notification and dashboard
+                    console.log("pending reports: " + iPendingReports);
                     break;
                 case "accepted":
                     fnAddAccepted(sKey, sCompanyName, aDamages);
@@ -493,6 +448,14 @@ var fnAddDeclined = function(key, company, damage){
  UPDATE
  ********************************************************************************/
 
+var fnSetStatus = function(id, val){
+    database.ref('bikes/' + id + '/status').set(val);
+};
+
+var fnArchiveCard = function(){
+
+};
+
 /********************************************************************************
  Accept
  ********************************************************************************/
@@ -503,11 +466,16 @@ $(document).on('click','.report-accept', function(){
 
 var fnAcceptReport = function (that){
     var sId= that.parentNode.parentNode.id;
-    console.log(sId);
-    // set status to "accepted"
 
+    // update Database
+    fnSetStatus(sId, "accepted");
+
+    // update interface
     fnRemoveCard(sId);
     fnShowMessage("Report accepted","success");
+    fnArchiveCard("accept");
+    // add to archive
+    // make sure notifications only show on add.
 };
 
 /********************************************************************************
@@ -519,9 +487,14 @@ $(document).on('click','.report-decline', function(){
 
 var fnDeclineReport = function (that){
     var sId= that.parentNode.parentNode.id;
-   // set status to "declined"
+
+    // update Database
+    fnSetStatus(sId, "declined");
+
+    // update interface
     fnRemoveCard(sId);
     fnShowMessage("Report declined","error");
+    fnArchiveCard("decline");
 };
 
 /********************************************************************************

@@ -6,7 +6,7 @@
   left: -$sidebar-width-small;
   height: 100%;
   color: $base-color;
-  transition: 0.5s left;
+  transition: 0.3s left;
   &.open{
     left:0;
   }

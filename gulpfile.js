@@ -15,6 +15,7 @@ var uglify = require('gulp-uglify');
 var rename = require("gulp-rename");
 var runSequence = require('run-sequence');
 var cleanCSS = require('gulp-clean-css');
+var connect = require('gulp-connect');
 
 gulp.task('default', function (callback) { //watcher
     runSequence(['sass','browserSync', 'watch'],
@@ -39,8 +40,12 @@ gulp.task('watch', ['browserSync', 'sass'], function(){
     gulp.watch('assets/scripts/**/*.js', ['js']);
 });
 
-
-
+// start server
+gulp.task('webserver', function() {
+  connect.server({
+    livereload: true
+  });
+});
 
 // BrowserSync init
 gulp.task('browserSync', function() {
@@ -111,4 +116,6 @@ gulp.task('clean:dist', function() {
 gulp.task('cache:clear', function (callback) {
     return cache.clearAll(callback)
 });
+
+
 

@@ -50,7 +50,9 @@ gulp.task('webserver', function() {
 // BrowserSync init
 gulp.task('browserSync', function() {
     browserSync.init({
-        proxy: "http://localhost:8888/dashboard/"
+      server: {
+        baseDir: "./"
+      }
     });
 });
 

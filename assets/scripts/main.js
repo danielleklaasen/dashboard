@@ -369,6 +369,8 @@ bikesRef.on('value', function(snapshot) {
         }
 
     });
+
+
     if(bFirstLoaded){
         fnShowNotification("New pending reports","report");
     }

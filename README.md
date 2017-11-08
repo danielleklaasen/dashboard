@@ -20,7 +20,7 @@ gulp watch
 
 #### BrowserSync
 
-You get a URL in the terminal, use it to open to your project from different browsers / devices. The screens will all be synchronised. 
+After running gulp watch you'll get a URL in the terminal, use it to open to your project from different browsers / devices. The screens will all be synchronised. 
 
 #### Deployment
 
@@ -29,6 +29,7 @@ Make sure you run this command to clean up your /dist folder, minify JS and HTML
 ```
 gulp build
 ``` 
+You are now ready to upload the files to a server.
 
 ### Directory Structure
 
@@ -44,7 +45,7 @@ All your working files (images, scripts, styles) go in the /assets folder. When 
 
 * **Danielle Klaasen** - *Initial work* - [danielleklaasen.com](http://www.danielleklaasen.com)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/danielleklaasen/dashboard/graphs/contributors) who participated in this project.
 
 ## License
 

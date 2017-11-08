@@ -4,6 +4,17 @@
   width: 1em;
   height: 1em;
   vertical-align: -0.05em;
+  &.no-mobile{
+    display: none;
+    @include breakpoint(laptop){
+      display: inline-block;
+    }
+  }
+  &.only-mobile{
+    @include breakpoint(laptop){
+      display: none;
+    }
+  }
 }
 
 .lnr-example {

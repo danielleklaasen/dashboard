@@ -254,6 +254,14 @@ var fnLogin = function(){
 
  ********************************************************************************/
 
+$(document).on('click', '.open-menu', function(){
+  fnOpenSidebar();
+});
+
+$(document).on('click', '.close-menu', function(){
+  fnCloseSidebar();
+});
+
 
 $(document).on('mouseover','#sidebar', function(){
     fnOpenSidebar();
@@ -416,6 +424,7 @@ var fnAddPending = function(key, company, damage ){
         '<div class="card-buttons">' +
         '<svg class="lnr lnr-checkmark-circle report-accept link"><use xlink:href="#lnr-checkmark-circle"></use></svg>' +
         '<svg class="lnr lnr-cross-circle report-decline link"><use xlink:href="#lnr-cross-circle"></use></svg>'+
+        '<svg class="report-delete lnr lnr-trash link"><use xlink:href="#lnr-trash"></use></svg>' +
         '</div>' +
         '</div>';
 
@@ -429,8 +438,11 @@ var fnAddAccepted = function(key, company, damage){
         '<div class="h4 card-text">' +
         '<p class="bold">Damaged part(s)</p>'+sDamage+'<br/><br/>' +
         '<p class="bold">'+company+'</p>Bike id '+ key +'</div>' +
+        '<div class="card-buttons">' +
+        '<svg class="lnr lnr-checkmark-circle report-accept link"><use xlink:href="#lnr-checkmark-circle"></use></svg>' +
+        '<svg class="lnr lnr-cross-circle report-decline link"><use xlink:href="#lnr-cross-circle"></use></svg>' +
         '<svg class="report-delete lnr lnr-trash link"><use xlink:href="#lnr-trash"></use></svg>' +
-        '</div>';
+        '</div></div>';
 
     $("#archive-container").append( sBlueprint ); // add pending report to container
 };
@@ -442,8 +454,11 @@ var fnAddDeclined = function(key, company, damage){
         '<div class="h4 card-text">' +
         '<p class="bold">Damaged part(s)</p>'+sDamage+'<br/><br/>' +
         '<p class="bold">'+company+'</p>Bike id '+ key +'</div>' +
+        '<div class="card-buttons">' +
+        '<svg class="lnr lnr-checkmark-circle report-accept link"><use xlink:href="#lnr-checkmark-circle"></use></svg>' +
+        '<svg class="lnr lnr-cross-circle report-decline link"><use xlink:href="#lnr-cross-circle"></use></svg>' +
         '<svg class="report-delete lnr lnr-trash link"><use xlink:href="#lnr-trash"></use></svg>' +
-        '</div>';
+        '</div></div>';
 
     $("#archive-container").append( sBlueprint ); // add pending report to container
 };
@@ -542,7 +557,7 @@ $(document).on('click','.report-delete', function(){
 });
 
 var fnDeleteReport = function (that){
-    var sId= that.parentNode.id;
+    var sId= that.parentNode.parentNode.id;
 
     // update database
     fnRemoveFromDB(sId);

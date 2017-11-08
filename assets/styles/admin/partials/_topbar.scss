@@ -28,6 +28,12 @@
           font-size: 15px;
         }
       }
+      .lnr-menu{
+        background-color: $primary-color;
+        color: $base-color;
+        @include border-radius(2px);
+        padding: 3px;
+      }
     }
     .lnr{
       font-size: 20px;

@@ -18,13 +18,15 @@
 <nav id="topbar" class="container">
     <div class="wrapper">
         <a href="#" class="open-home logo h1">Bike Repair</a>
-        <svg class="lnr lnr-magnifier open-search link"><use xlink:href="#lnr-magnifier"></use></svg>
+        <svg class="lnr lnr-magnifier open-search link no-mobile"><use xlink:href="#lnr-magnifier"></use></svg>
         <div class="icons-right">
             <div class="notifications link open-report-wdw">
                 <svg class="lnr lnr-file-empty"><use xlink:href="#lnr-file-empty"></use></svg>
                 <div id="pending-notification" class="pending-reports-num"></div>
             </div>
-            <svg class="lnr lnr-user link open-profile"><use xlink:href="#lnr-user"></use></svg>
+            <svg class="lnr lnr-user link open-profile no-mobile"><use xlink:href="#lnr-user"></use></svg>
+            <svg class="lnr lnr-menu link open-menu only-mobile"><use xlink:href="#lnr-menu"></use></svg>
+
         </div>
     </div>
 </nav>
@@ -34,25 +36,39 @@
 
 <!-- SIDEBAR -->
 <aside id="sidebar">
-    <header>
-        <a href="#" class="h1 logo open-home">Bike Repair</a>
-    </header>
-    <div class="menu-item active open-home">
-        <p>Dashboard</p>
-        <div class="btn-square">
-            <svg class="lnr lnr-home"><use xlink:href="#lnr-home"></use></svg>
+    <div class="menu-container">
+        <header>
+            <a href="#" class="h1 logo open-home">Bike Repair</a>
+            <svg class="lnr lnr-menu link close-menu only-mobile"><use xlink:href="#lnr-menu"></use></svg>
+        </header>
+        <div class="menu-item active open-home">
+            <p>Dashboard</p>
+            <div class="btn-square">
+                <svg class="lnr lnr-home"><use xlink:href="#lnr-home"></use></svg>
+            </div>
+        </div>
+        <div class="open-report-wdw menu-item">
+            <p>Pending reports</p>
+            <div class="btn-square">
+                <svg class="lnr lnr-file-empty"><use xlink:href="#lnr-file-empty"></use></svg>
+            </div>
+        </div>
+        <div class="open-archive-wdw menu-item">
+            <p>Archive</p>
+            <div class="btn-square">
+                <svg class="lnr lnr-inbox"><use xlink:href="#lnr-inbox"></use></svg>
+            </div>
         </div>
     </div>
-    <div class="open-report-wdw menu-item">
-        <p>Pending reports</p>
-        <div class="btn-square">
-            <svg class="lnr lnr-file-empty"><use xlink:href="#lnr-file-empty"></use></svg>
+
+    <div class="mobile-btn-container">
+        <div class="menu-item-mobile vertical-line-right link">
+            <svg class="lnr lnr-magnifier open-search "><use xlink:href="#lnr-magnifier"></use></svg>
+            <p>Search</p>
         </div>
-    </div>
-    <div class="open-archive-wdw menu-item">
-        <p>Archive</p>
-        <div class="btn-square">
-            <svg class="lnr lnr-inbox"><use xlink:href="#lnr-inbox"></use></svg>
+        <div class="menu-item-mobile link">
+            <svg class="lnr lnr-user open-profile"><use xlink:href="#lnr-user"></use></svg>
+            <p>Profile</p>
         </div>
     </div>
 </aside>
@@ -92,7 +108,7 @@
         </div>
         <div class="open-report-wdw text-number-card card card-1">
             <div class="h4 card-text">Misplaced bikes</div>
-            <div class="card-number">?</div>
+            <div class="card-number">53</div>
         </div>
     </div>
 </div>
@@ -105,13 +121,14 @@
         <br>
         <div id="report-container" class="card-grid vertical-cards">
 
-            <!--BLUEPRINT REPORT CARD
-            <div class="text-report-card card card-1">
+            <!--BLUEPRINT REPORT CARD-->
+           <!-- <div class="text-report-card card card-1">
                  <div class="h4 card-text">
                      <p class="bold">
                          Damaged part(s)
                      </p>
-                     Lights<br/>gear<br/>wheel<br/>
+                     Lights<br/>gear<br/>wheel<br/>-->
+                     <!--
                      <button class="more-btn">
                        <!-- blueprint  <div class="circles-container">
                              <div class="circle"></div>
@@ -119,19 +136,21 @@
                              <div class="circle"></div>
                          </div>
                      </button>
-                     <br/>
+                     -->
+                  <!--   <br/>
                      <br/>
                      <p class="bold">
                          Company
                      </p>
-                     Bike id 9999
+                     Bike id FAKE
                  </div>
                  <div class="card-buttons">
                      <svg class="lnr lnr-checkmark-circle report-accept link"><use xlink:href="#lnr-checkmark-circle"></use></svg>
-                     <svg class="lnr lnr-cross-circle report-accept link"><use xlink:href="#lnr-cross-circle"></use></svg>
+                     <svg class="lnr lnr-cross-circle report-decline link"><use xlink:href="#lnr-cross-circle"></use></svg>
+                     <svg class="report-delete lnr lnr-trash link"><use xlink:href="#lnr-trash"></use></svg>
                  </div>
-             </div>
-             -->
+             </div>-->
+
 
         </div>
     </div>
@@ -145,28 +164,25 @@
         <h2>Archive</h2>
         <br>
         <div id="archive-container" class="card-grid vertical-cards">
-            <!--BLUEPRINT REPORT CARD
-                <div class="text-report-card card card-1 card-accept">
+            <!--BLUEPRINT REPORT CARD-->
+                <!--<div class="text-report-card card card-1 card-accept">
                      <div class="h4 card-text">
                          <p class="bold">
                              Damaged part(s)
                          </p>
                          Lights<br/>gear<br/>wheel<br/>
-                         <button class="more-btn">
-                           <!-- blueprint  <div class="circles-container">
-                                 <div class="circle"></div>
-                                 <div class="circle"></div>
-                                 <div class="circle"></div>
-                             </div>
-                         </button>
                          <br/>
                          <br/>
                          <p class="bold">
                              Company
                          </p>
-                         Bike id 9999
+                         Bike id FAKE
                      </div>
-                    <svg class="report-delete lnr lnr-trash link"><use xlink:href="#lnr-trash"></use></svg>
+                     <div class="card-buttons">
+                         <svg class="lnr lnr-checkmark-circle report-accept link"><use xlink:href="#lnr-checkmark-circle"></use></svg>
+                         <svg class="lnr lnr-cross-circle report-decline link"><use xlink:href="#lnr-cross-circle"></use></svg>
+                         <svg class="report-delete lnr lnr-trash link"><use xlink:href="#lnr-trash"></use></svg>
+                     </div>
                  </div>
 
 
@@ -176,22 +192,19 @@
                              Damaged part(s)
                          </p>
                          Lights<br/>gear<br/>wheel<br/>
-                         <button class="more-btn">
-                           <!-- blueprint  <div class="circles-container">
-                                 <div class="circle"></div>
-                                 <div class="circle"></div>
-                                 <div class="circle"></div>
-                             </div>
-                         </button>
                          <br/>
                          <br/>
                          <p class="bold">
                              Company
                          </p>
-                         Bike id 9999
+                         Bike id FAKE
                      </div>
-                    <svg class="report-delete lnr lnr-trash link"><use xlink:href="#lnr-trash"></use></svg>
-                 </div> -->
+                     <div class="card-buttons">
+                         <svg class="lnr lnr-checkmark-circle report-accept link"><use xlink:href="#lnr-checkmark-circle"></use></svg>
+                         <svg class="lnr lnr-cross-circle report-decline link"><use xlink:href="#lnr-cross-circle"></use></svg>
+                         <svg class="report-delete lnr lnr-trash link"><use xlink:href="#lnr-trash"></use></svg>
+                     </div>
+                 </div>-->
         </div>
     </div>
 </div>

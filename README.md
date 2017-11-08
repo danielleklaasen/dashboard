@@ -56,7 +56,7 @@ All your working files (images, scripts, styles) go in the /assets folder. When 
 
 * **Danielle Klaasen** - *Initial work* - [danielleklaasen.com](http://www.danielleklaasen.com)
 
-See also the list of [contributors](https://github.com/danielleklaasen/dashboard/graphs/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/LABS-infonl/bike-repair-app/graphs/contributors) who participated in this project.
 
 ## License
 

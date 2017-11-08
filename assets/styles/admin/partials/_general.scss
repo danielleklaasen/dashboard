@@ -16,3 +16,13 @@ body,html{
   margin-top: 80px;
 }
 
+.vertical-line-right{
+  border-right:1px solid $primary-color;
+}
+
+.only-mobile{
+  @include breakpoint(laptop){
+    display: none;
+  }
+}
+

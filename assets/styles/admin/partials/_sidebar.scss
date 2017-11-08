@@ -1,16 +1,30 @@
 #sidebar{
   background-color: rgba($primary-color, 0.95);
-  width: $sidebar-width; // declared in base
+  width: 100%;
+  @include breakpoint(laptop){
+    width: $sidebar-width; // declared in base
+  }
+
   position: fixed;
   top:0;
-  left: -$sidebar-width-small;
+
+  left:-100vw;
+  @include breakpoint(laptop){
+    left: -$sidebar-width-small;
+  }
+
   height: 100%;
   color: $base-color;
   transition: 0.3s left;
+  @include flexbox();
+  @include flex-direction(column);
+  @include justify-content(space-between);
+
   &.open{
     left:0;
   }
   header{
+    position: relative;
     width: 100%;
     background-color: rgba($primary-color, 0.7);
     height: $topbar-height;
@@ -21,43 +35,75 @@
     a{
       color: $base-color;
     }
+    .lnr-menu{
+      position: absolute;
+      right: 10px;
+      background-color: $base-color;
+      color: $primary-color;
+      @include border-radius(2px);
+      padding: 3px;
+    }
   }
-  .menu-item{
-    margin: 0 20px;
-    padding: 15px 0;
-    color: $secondary-color;
+
+  .menu-container{
+    .menu-item{
+      margin: 0 20px;
+      padding: 15px 0;
+      color: $secondary-color;
+      @include flexbox();
+      @include flex-direction(row);
+      @include justify-content(space-between);
+      @include align-items(center);
+      border-bottom: 1px solid $primary-color;
+      transition: 0.2s;
+      .btn-square{
+        @include flexbox();
+        @include align-items(center);
+        @include justify-content(center);
+        .lnr{
+          fill: $base-color;
+        }
+      }
+      &:hover{
+        color: $accent-color;
+        cursor: pointer;
+        opacity: 0.8;
+        .btn-square{
+          .lnr{
+            fill: $accent-color;
+          }
+        }
+      }
+      &.active{
+        color: $accent-color;
+        .btn-square{
+          background-color: $accent-color;
+          .lnr{
+            fill: $primary-color;
+          }
+        }
+      }
+    }
+  }
+
+  .mobile-btn-container{
+    height: 100px;
     @include flexbox();
     @include flex-direction(row);
-    @include justify-content(space-between);
     @include align-items(center);
-    border-bottom: 1px solid $primary-color;
-    transition: 0.2s;
-    .btn-square{
+    .menu-item-mobile{
+      width: 50%;
+      height: 50px;
       @include flexbox();
+      @include flex-direction(column);
       @include align-items(center);
-      @include justify-content(center);
+      @include justify-content(space-around);
       .lnr{
-        fill: $base-color;
+        color: $base-color;
       }
     }
-    &:hover{
-      color: $accent-color;
-      cursor: pointer;
-      opacity: 0.8;
-      .btn-square{
-        .lnr{
-          fill: $accent-color;
-        }
-      }
-    }
-    &.active{
-      color: $accent-color;
-      .btn-square{
-        background-color: $accent-color;
-        .lnr{
-          fill: $primary-color;
-        }
-      }
+    @include breakpoint(laptop){
+      display: none;
     }
   }
 }

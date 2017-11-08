@@ -77,8 +77,23 @@
   @include flex-direction(column);
   @include justify-content(space-around);
   @include align-items(center);
+  &.card-accept, &.card-decline{
+    .card-buttons{
+      .report-accept, .report-decline{
+        display: none;
+      }
+      .report-delete{
+        display: block;
+      }
+    }
+  }
   .card-text{
     text-align: center;
+  }
+  .card-buttons{
+    .report-delete{
+      display: none;
+    }
   }
 }
 

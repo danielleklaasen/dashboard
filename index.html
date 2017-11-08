@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <!-- style -->
+    <link rel="stylesheet" href="dist/styles/admin.css">
+    <!-- loading google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400|Rubik:900" rel="stylesheet">
+    <!-- page title -->
+    <title>Bike Repair Dashboard</title>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<nav id="topbar" class="container">
+    <div class="wrapper">
+        <a href="#" class="open-home logo h1">Bike Repair</a>
+        <svg class="lnr lnr-magnifier open-search link"><use xlink:href="#lnr-magnifier"></use></svg>
+        <div class="icons-right">
+            <div class="notifications link open-report-wdw">
+                <svg class="lnr lnr-file-empty"><use xlink:href="#lnr-file-empty"></use></svg>
+                <div class="pending-reports-num"></div>
+            </div>
+            <svg class="lnr lnr-user link open-profile"><use xlink:href="#lnr-user"></use></svg>
+        </div>
+    </div>
+</nav>
+
+<!-- FEEDBACK TO USER COMES HERE. MAINTAINED IN SCRIPT -->
+<div id="message"></div>
+
+<!-- SIDEBAR -->
+<aside id="sidebar">
+    <header>
+        <a href="#" class="h1 logo open-home">Bike Repair</a>
+    </header>
+    <div class="menu-item active open-home">
+        <p>Dashboard</p>
+        <div class="btn-square">
+            <svg class="lnr lnr-home"><use xlink:href="#lnr-home"></use></svg>
+        </div>
+    </div>
+    <div class="open-report-wdw menu-item">
+        <p>Pending reports</p>
+        <div class="btn-square">
+            <svg class="lnr lnr-file-empty"><use xlink:href="#lnr-file-empty"></use></svg>
+        </div>
+    </div>
+    <div class="open-archive-wdw menu-item">
+        <p>Archive</p>
+        <div class="btn-square">
+            <svg class="lnr lnr-inbox"><use xlink:href="#lnr-inbox"></use></svg>
+        </div>
+    </div>
+</aside>
+
+<!-- LOGIN SCREEN -->
+<div class="wdw login-wdw">
+    <div class="accent-color-overlay">
+        <h1 class="logo">Bike Repair Dashboard</h1>
+
+        <form class="login-form">
+            <input type="text" placeholder="Username">
+            <input type="password" placeholder="Password">
+            <button class="btn-login">Login</button>
+        </form>
+
+        <div class="register-btn">
+            <p>No account yet?</p>
+            <a href="#" class="underline-disappear">Sign in here</a>
+        </div>
+    </div>
+</div>
+
+<!-- SEARCH SCREEN -->
+<div class="search-wdw">
+    <svg class="lnr lnr-cross link close-search"><use xlink:href="#lnr-cross"></use></svg>
+    <input id="search-input" class="big-input" type="text" name="search" placeholder="Search..">
+</div>
+
+<!-- HOME SCREEN -->
+<div class="container wdw home-wdw open">
+    <div class="top-space"></div>
+    <div class="wrapper card-grid dark-cards">
+
+        <div class="open-report-wdw text-number-card card card-1">
+            <div class="h4 card-text">Damage reports</div>
+            <div class="card-number pending-reports-num"></div>
+        </div>
+        <div class="open-report-wdw text-number-card card card-1">
+            <div class="h4 card-text">Misplaced bikes</div>
+            <div class="card-number">45</div>
+        </div>
+    </div>
+</div>
+
+<!-- REPORTS SCREEN -->
+<div class="wdw report-wdw container">
+    <div class="wrapper">
+        <div class="top-space"></div>
+        <h2>Pending reports</h2>
+        <br>
+        <div id="report-container" class="card-grid vertical-cards">
+
+            <!--BLUEPRINT REPORT CARD
+            <div class="text-report-card card card-1">
+                 <div class="h4 card-text">
+                     <p class="bold">
+                         Damaged part(s)
+                     </p>
+                     Lights<br/>gear<br/>wheel<br/>
+                     <button class="more-btn">
+                       <!-- blueprint  <div class="circles-container">
+                             <div class="circle"></div>
+                             <div class="circle"></div>
+                             <div class="circle"></div>
+                         </div>
+                     </button>
+                     <br/>
+                     <br/>
+                     <p class="bold">
+                         Company
+                     </p>
+                     Bike id 9999
+                 </div>
+                 <div class="card-buttons">
+                     <svg class="lnr lnr-checkmark-circle report-accept link"><use xlink:href="#lnr-checkmark-circle"></use></svg>
+                     <svg class="lnr lnr-cross-circle report-accept link"><use xlink:href="#lnr-cross-circle"></use></svg>
+                 </div>
+             </div>
+             -->
+
+        </div>
+    </div>
+</div>
+
+<!-- ARCHIVE SCREEN -->
+<div class="wdw container archive-wdw">
+    <div class="wrapper">
+
+        <div class="top-space"></div>
+        <h2>Archive</h2>
+        <br>
+        <div id="archive-container" class="card-grid vertical-cards">
+            <!--BLUEPRINT REPORT CARD
+                <div class="text-report-card card card-1 card-accept">
+                     <div class="h4 card-text">
+                         <p class="bold">
+                             Damaged part(s)
+                         </p>
+                         Lights<br/>gear<br/>wheel<br/>
+                         <button class="more-btn">
+                           <!-- blueprint  <div class="circles-container">
+                                 <div class="circle"></div>
+                                 <div class="circle"></div>
+                                 <div class="circle"></div>
+                             </div>
+                         </button>
+                         <br/>
+                         <br/>
+                         <p class="bold">
+                             Company
+                         </p>
+                         Bike id 9999
+                     </div>
+                    <svg class="report-delete lnr lnr-trash link"><use xlink:href="#lnr-trash"></use></svg>
+                 </div>
+
+
+                  <div class="text-report-card card card-1 card-decline">
+                     <div class="h4 card-text">
+                         <p class="bold">
+                             Damaged part(s)
+                         </p>
+                         Lights<br/>gear<br/>wheel<br/>
+                         <button class="more-btn">
+                           <!-- blueprint  <div class="circles-container">
+                                 <div class="circle"></div>
+                                 <div class="circle"></div>
+                                 <div class="circle"></div>
+                             </div>
+                         </button>
+                         <br/>
+                         <br/>
+                         <p class="bold">
+                             Company
+                         </p>
+                         Bike id 9999
+                     </div>
+                    <svg class="report-delete lnr lnr-trash link"><use xlink:href="#lnr-trash"></use></svg>
+                 </div> -->
+        </div>
+    </div>
+</div>
+
+<!-- PROFILE SCREEN -->
+<div class="wdw container profile-wdw">
+    <div class="wrapper">
+        <div class="top-space"></div>
+        <h2>Welcome Danielle</h2>
+    </div>
+</div>
+
+<!-- SCRIPTS -->
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyD0u03x_GbxInP5Jnm4LqieZOEXarkvhck",
+        authDomain: "bike-repair-1f2cf.firebaseapp.com",
+        databaseURL: "https://bike-repair-1f2cf.firebaseio.com",
+        projectId: "bike-repair-1f2cf",
+        storageBucket: "bike-repair-1f2cf.appspot.com",
+        messagingSenderId: "182218955732"
+    };
+    firebase.initializeApp(config);
+</script>
+
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<!--<script src="dist/scripts/lib/jquery.touch.min.js"></script>-->
+<script src="dist/scripts/main.min.js"></script>
+<script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
+</body>
+</html>

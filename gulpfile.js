@@ -18,9 +18,7 @@ var cleanCSS = require('gulp-clean-css');
 var connect = require('gulp-connect');
 
 gulp.task('default', function (callback) { //watcher
-    runSequence(['sass','browserSync', 'watch'],
-        callback
-    )
+  gulp.start('watch');
 });
 
 gulp.task('build', function (callback) {

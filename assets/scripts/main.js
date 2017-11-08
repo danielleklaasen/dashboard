@@ -326,7 +326,10 @@ var database = firebase.database();
  ********************************************************************************/
 
 var iPendingReports = 0;
+var sPendingNotification = $('#pending-notification');
+sPendingNotification.hide();
 var bFirstLoaded = false;
+var bNewPendingReports = false;
 var aLoadedReports = [];
 
 var bikesRef = database.ref('bikes');
@@ -352,7 +355,8 @@ bikesRef.on('value', function(snapshot) {
                     fnAddPending(sKey, sCompanyName, aDamages);
                     iPendingReports++;
                     sPendingReports.text(iPendingReports); // set number of pending reports in notification and dashboard
-                    console.log("pending reports: " + iPendingReports);
+                    sPendingNotification.show();
+                    bNewPendingReports = true; // setting to true so notification will show
                     break;
                 case "accepted":
                     fnAddAccepted(sKey, sCompanyName, aDamages);
@@ -369,12 +373,11 @@ bikesRef.on('value', function(snapshot) {
         }
 
     });
-
-
-    if(bFirstLoaded){
+    if(bFirstLoaded && bNewPendingReports){
         fnShowNotification("New pending reports","report");
     }
-    bFirstLoaded = true;
+    bNewPendingReports = false; // back to false, will be set to true again if there are new pending reports
+    bFirstLoaded = true; // initial batch loaded, ready to show notifications for new ones
 });
 
 
@@ -387,7 +390,7 @@ var fnFormatDamage = function(damage){
             if(i < 3){
                 sDamage += damage[i] + "<br>";
             }
-            if(i==4){
+            if(i===4){
                 sDamage += '<button class="more-btn">' +
                     '<div class="circles-container">' +
                     '<div class="circle"></div>' +
@@ -454,8 +457,19 @@ var fnSetStatus = function(id, val){
     database.ref('bikes/' + id + '/status').set(val);
 };
 
-var fnArchiveCard = function(){
+var fnArchiveCard = function(id, status){
+    var sCard = $('#'+id);
+    sCard.appendTo('#archive-container');
+    sCard.addClass('card-'+status);
+};
 
+var fnRemovePendingNotification = function(){
+  iPendingReports--; // not pending anymore
+  if(iPendingReports===0){
+    sPendingNotification.hide();
+  }
+  sPendingReports = $('.pending-reports-num');
+  sPendingReports.text(iPendingReports); // set number of pending reports in notification and dashboard
 };
 
 /********************************************************************************
@@ -473,11 +487,10 @@ var fnAcceptReport = function (that){
     fnSetStatus(sId, "accepted");
 
     // update interface
-    fnRemoveCard(sId);
+    fnRemovePendingNotification();
+    fnArchiveCard(sId, "accept");
     fnShowMessage("Report accepted","success");
-    fnArchiveCard("accept");
-    // add to archive
-    // make sure notifications only show on add.
+
 };
 
 /********************************************************************************
@@ -494,9 +507,9 @@ var fnDeclineReport = function (that){
     fnSetStatus(sId, "declined");
 
     // update interface
-    fnRemoveCard(sId);
+    fnRemovePendingNotification();
+    fnArchiveCard(sId, "decline");
     fnShowMessage("Report declined","error");
-    fnArchiveCard("decline");
 };
 
 /********************************************************************************
@@ -504,13 +517,25 @@ var fnDeclineReport = function (that){
  ********************************************************************************/
 // remove card from interface
 var fnRemoveCard = function (id) {
-    $('#'+id).fadeOut();
+    $('#'+id).remove();
 };
-
 
 /********************************************************************************
  DELETE
  ********************************************************************************/
+
+var fnRemoveFromDB = function(id){
+    database.ref('bikes/' + id).remove(function(error){
+      // update interface if successful
+        if(!error){
+          fnShowMessage("Report deleted!","success");
+          fnRemoveCard(id);
+          aLoadedReports.splice(id, 1);
+        }else{
+          fnShowMessage("Delete failed...","error");
+        }
+    });
+};
 
 $(document).on('click','.report-delete', function(){
     fnDeleteReport(this);
@@ -518,8 +543,8 @@ $(document).on('click','.report-delete', function(){
 
 var fnDeleteReport = function (that){
     var sId= that.parentNode.id;
-    fnShowMessage("Report deleted!","success");
-    // update interface, remove card
-    $(that).parents('.text-report-card').remove();
-    aLoadedReports.splice(sId, 1);
+
+    // update database
+    fnRemoveFromDB(sId);
+
 };

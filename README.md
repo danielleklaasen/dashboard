@@ -18,6 +18,12 @@ Run the command below to open the project in your browser. When you change a fil
 gulp watch
 ```
 
+or 
+
+```
+gulp
+```
+(Default task refers to watch task)
 #### BrowserSync
 
 After running gulp watch you'll get a URL in the terminal, use it to open to your project from different browsers / devices. The screens will all be synchronised. 
@@ -35,6 +41,11 @@ You are now ready to upload the files to a server.
 
 All your working files (images, scripts, styles) go in the /assets folder. When you use Gulp all your optimised files will come in the /dist folder. Refer to this one in your code.
 
+## Missing functionality
+
+* Misplaced bike number is hardcoded.
+* Search form is not working
+* Login not functional
 
 ## Built With
 

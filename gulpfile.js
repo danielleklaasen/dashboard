@@ -34,8 +34,8 @@ gulp.task('watch', ['browserSync', 'sass'], function(){
     // Gets all files ending with .scss in assets/styles and children dirs
     gulp.watch('assets/styles/**/*.scss', ['sass']);
 
-    // Reloads the browser whenever PHP or JS files change
-    gulp.watch('**/*.php', browserSync.reload);
+    // Reloads the browser whenever HTML or JS files change
+    gulp.watch('**/*.html', browserSync.reload);
     gulp.watch('assets/scripts/**/*.js', ['js']);
 });
 

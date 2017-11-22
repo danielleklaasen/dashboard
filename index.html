@@ -39,7 +39,11 @@
     <div class="menu-container">
         <header>
             <a href="#" class="h1 logo open-home">Bike Repair</a>
-            <svg class="lnr lnr-menu link close-menu only-mobile"><use xlink:href="#lnr-menu"></use></svg>
+
+            <a href="#" class="sidebar-close only-mobile">
+                <svg class="lnr lnr-cross"><use xlink:href="#lnr-cross"></use></svg>
+            </a>
+
         </header>
         <div class="menu-item active open-home">
             <p>Dashboard</p>
@@ -62,12 +66,12 @@
     </div>
 
     <div class="mobile-btn-container">
-        <div class="menu-item-mobile vertical-line-right link">
-            <svg class="lnr lnr-magnifier open-search "><use xlink:href="#lnr-magnifier"></use></svg>
+        <div class="menu-item-mobile vertical-line-right link open-search">
+            <svg class="lnr lnr-magnifier  "><use xlink:href="#lnr-magnifier"></use></svg>
             <p>Search</p>
         </div>
-        <div class="menu-item-mobile link">
-            <svg class="lnr lnr-user open-profile"><use xlink:href="#lnr-user"></use></svg>
+        <div class="menu-item-mobile link open-profile">
+            <svg class="lnr lnr-user"><use xlink:href="#lnr-user"></use></svg>
             <p>Profile</p>
         </div>
     </div>
@@ -100,7 +104,8 @@
 <!-- HOME SCREEN -->
 <div class="container wdw home-wdw open">
     <div class="top-space"></div>
-    <div class="wrapper card-grid dark-cards">
+   <!-- <div class="wrapper card-grid dark-cards"> -->
+    <div class="wrapper dark-cards">
 
         <div class="open-report-wdw text-number-card card card-1">
             <div class="h4 card-text">Damage reports</div>
@@ -119,7 +124,8 @@
         <div class="top-space"></div>
         <h2>Pending reports</h2>
         <br>
-        <div id="report-container" class="card-grid vertical-cards">
+       <!-- <div id="report-container" class="card-grid vertical-cards"> -->
+        <div id="report-container" class="vertical-cards">
 
             <!--BLUEPRINT REPORT CARD-->
            <!-- <div class="text-report-card card card-1">
@@ -184,7 +190,6 @@
                          <svg class="report-delete lnr lnr-trash link"><use xlink:href="#lnr-trash"></use></svg>
                      </div>
                  </div>
-
 
                   <div class="text-report-card card card-1 card-decline">
                      <div class="h4 card-text">

@@ -39,6 +39,7 @@ button, .btn{
   width: 30px;
   height: 30px;
   background-color: $primary-color;
+  @include border-radius(2px);
 }
 
 .close {

@@ -3,16 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="9edc3b11-ea9a-4c01-bcbb-83372a5b2aa3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/scripts/main.js" afterPath="$PROJECT_DIR$/assets/scripts/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/styles/admin/partials/_buttons.scss" afterPath="$PROJECT_DIR$/assets/styles/admin/partials/_buttons.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/styles/admin/partials/_cards.scss" afterPath="$PROJECT_DIR$/assets/styles/admin/partials/_cards.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/styles/admin/partials/_general.scss" afterPath="$PROJECT_DIR$/assets/styles/admin/partials/_general.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/styles/admin/partials/_grids.scss" afterPath="$PROJECT_DIR$/assets/styles/admin/partials/_grids.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/styles/admin/partials/_icons.scss" afterPath="$PROJECT_DIR$/assets/styles/admin/partials/_icons.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/styles/admin/partials/_sidebar.scss" afterPath="$PROJECT_DIR$/assets/styles/admin/partials/_sidebar.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/styles/admin/partials/_topbar.scss" afterPath="$PROJECT_DIR$/assets/styles/admin/partials/_topbar.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codepens/codepen_aNVzoJ (1)/index.html" afterPath="$PROJECT_DIR$/codepens/codepen_aNVzoJ (1)/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/scripts/main.min.js" afterPath="$PROJECT_DIR$/dist/scripts/main.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/styles/admin.css" afterPath="$PROJECT_DIR$/dist/styles/admin.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/styles/admin.min.css" afterPath="$PROJECT_DIR$/dist/styles/admin.min.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,38 +28,28 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+            <state relative-caret-position="153">
+              <caret line="127" column="42" lean-forward="false" selection-start-line="127" selection-start-column="42" selection-end-line="127" selection-end-column="42" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_sidebar.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/styles/admin/partials/_sidebar.scss">
+      <file leaf-file-name="_grids.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/styles/admin/partials/_grids.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="24" column="3" lean-forward="true" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
+            <state relative-caret-position="168">
+              <caret line="16" column="2" lean-forward="false" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_topbar.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/styles/admin/partials/_topbar.scss">
+      <file leaf-file-name="_cards.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/styles/admin/partials/_cards.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
-              <caret line="34" column="21" lean-forward="true" selection-start-line="31" selection-start-column="7" selection-end-line="34" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/scripts/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="260" column="50" lean-forward="true" selection-start-line="260" selection-start-column="50" selection-end-line="260" selection-end-column="50" />
+            <state relative-caret-position="120">
+              <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -97,6 +85,7 @@
       <find>iPen</find>
       <find>iPendingReports</find>
       <find>sidebar</find>
+      <find>profile</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -134,7 +123,6 @@
         <option value="$PROJECT_DIR$/assets/styles/admin/partials/_inputs.scss" />
         <option value="$PROJECT_DIR$/templates/meta.php" />
         <option value="$PROJECT_DIR$/assets/styles/admin/partials/_typography.scss" />
-        <option value="$PROJECT_DIR$/assets/styles/admin/partials/_buttons.scss" />
         <option value="$PROJECT_DIR$/screens/reports.php" />
         <option value="$PROJECT_DIR$/templates/topbar.php" />
         <option value="$PROJECT_DIR$/screens/home.php" />
@@ -148,14 +136,15 @@
         <option value="$PROJECT_DIR$/LICENSE.md" />
         <option value="$PROJECT_DIR$/gulpfile.js" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/assets/styles/admin/partials/_cards.scss" />
         <option value="$PROJECT_DIR$/assets/styles/admin/partials/_grids.scss" />
         <option value="$PROJECT_DIR$/assets/styles/admin/partials/_general.scss" />
         <option value="$PROJECT_DIR$/assets/styles/admin/partials/_icons.scss" />
         <option value="$PROJECT_DIR$/assets/styles/admin/partials/_topbar.scss" />
+        <option value="$PROJECT_DIR$/assets/styles/admin/partials/_buttons.scss" />
         <option value="$PROJECT_DIR$/assets/scripts/main.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/assets/styles/admin/partials/_sidebar.scss" />
+        <option value="$PROJECT_DIR$/assets/styles/admin/partials/_cards.scss" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -219,14 +208,6 @@
               <item name="assets" type="462c0819:PsiDirectoryNode" />
               <item name="styles" type="462c0819:PsiDirectoryNode" />
               <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="dashboard" type="b2602c69:ProjectViewProjectNode" />
-              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="styles" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-              <item name="modules" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dashboard" type="b2602c69:ProjectViewProjectNode" />
@@ -358,23 +339,27 @@
       <workItem from="1510135698867" duration="78000" />
       <workItem from="1510135811044" duration="24000" />
       <workItem from="1510135852733" duration="38000" />
-      <workItem from="1510135905278" duration="12095000" />
+      <workItem from="1510135905278" duration="12172000" />
+      <workItem from="1510664796725" duration="394000" />
+      <workItem from="1510755868306" duration="2868000" />
+      <workItem from="1511280131474" duration="1000" />
+      <workItem from="1511342012544" duration="3290000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="142679000" />
+    <option name="totallyTimeSpent" value="149309000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="708" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="708" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.196875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25859374" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -483,13 +468,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api/reports/reports-backup.txt" />
-    <entry file="file://$PROJECT_DIR$/assets/styles/admin/partials/_buttons.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1875">
-          <caret line="125" column="20" lean-forward="false" selection-start-line="125" selection-start-column="20" selection-end-line="125" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/styles/admin/modules/_breakpoints.scss" />
     <entry file="file://$PROJECT_DIR$/assets/styles/admin/modules/_mixins.scss">
       <provider selected="true" editor-type-id="text-editor">
@@ -543,32 +521,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="303">
           <caret line="24" column="29" lean-forward="true" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="298">
             <caret line="56" column="18" lean-forward="false" selection-start-line="56" selection-start-column="18" selection-end-line="56" selection-end-column="18" />
-            <folding />
           </first_editor>
           <second_editor />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/styles/admin/partials/_cards.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="79" column="27" lean-forward="true" selection-start-line="79" selection-start-column="27" selection-end-line="79" selection-end-column="27" />
-          <folding />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -576,15 +543,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="466">
           <caret line="46" column="16" lean-forward="true" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/styles/admin/partials/_grids.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -592,7 +550,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -600,38 +557,63 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="14" column="19" lean-forward="false" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/styles/admin/partials/_sidebar.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="24" column="3" lean-forward="true" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/styles/admin/partials/_topbar.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="376">
-          <caret line="34" column="21" lean-forward="true" selection-start-line="31" selection-start-column="7" selection-end-line="34" selection-end-column="21" />
+          <caret line="34" column="21" lean-forward="false" selection-start-line="31" selection-start-column="7" selection-end-line="34" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/styles/admin/partials/_buttons.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="41" column="30" lean-forward="false" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/scripts/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="260" column="50" lean-forward="true" selection-start-line="260" selection-start-column="50" selection-end-line="260" selection-end-column="50" />
+        <state relative-caret-position="234">
+          <caret line="270" column="0" lean-forward="false" selection-start-line="270" selection-start-column="0" selection-end-line="270" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/styles/admin/partials/_sidebar.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="56" column="21" lean-forward="false" selection-start-line="56" selection-start-column="21" selection-end-line="56" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/styles/admin/partials/_cards.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="4" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/styles/admin/partials/_grids.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="16" column="2" lean-forward="false" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        <state relative-caret-position="153">
+          <caret line="127" column="42" lean-forward="false" selection-start-line="127" selection-start-column="42" selection-end-line="127" selection-end-column="42" />
           <folding />
         </state>
       </provider>

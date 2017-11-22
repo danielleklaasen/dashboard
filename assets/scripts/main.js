@@ -255,26 +255,32 @@ var fnLogin = function(){
  ********************************************************************************/
 
 $(document).on('click', '.open-menu', function(){
+  console.log("open");
   fnOpenSidebar();
 });
 
 $(document).on('click', '.close-menu', function(){
-  fnCloseSidebar();
+    console.log("close");
+    fnCloseSidebar();
 });
-
 
 $(document).on('mouseover','#sidebar', function(){
-    fnOpenSidebar();
+   // fnOpenSidebar();
 });
-$(document).on('click','#sidebar', function(){
-    fnOpenSidebar();
-});
-$(document).on('touchstart','#sidebar', function(){
-    fnOpenSidebar();
+$(document).on('mouseenter','#sidebar', function(){
+  fnOpenSidebar();
 });
 
 $(document).on('mouseleave','#sidebar', function(){
+  fnCloseSidebar();
+});
+
+$(document).on('click', '.sidebar-close', function(){
     fnCloseSidebar();
+});
+
+$(document).on('click', '.menu-item-mobile', function(){
+  fnCloseSidebar();
 });
 
 var sidebar = $("#sidebar");
@@ -290,6 +296,7 @@ var fnCloseSidebar = function (){
     if (sidebar.hasClass('open')){
         // close sidebar
         $("#sidebar").removeClass('open');
+      console.log("close");
     }
 };
 

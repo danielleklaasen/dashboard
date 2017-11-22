@@ -89,7 +89,7 @@ gulp.task('minify-js', function () {
 gulp.task('minify-css', function(){
     return gulp.src('dist/styles/*.css')
         .pipe(cleanCSS({compatibility: 'ie8'}))
-        .pipe(rename({ suffix: '.min' })) // adding .min
+      //  .pipe(rename({ suffix: '.min' })) // adding .min
         .pipe(gulp.dest('dist/styles'));
 });
 

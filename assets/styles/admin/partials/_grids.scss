@@ -12,6 +12,7 @@
   margin-right: 30px;
 }
 
+/*
 .card-grid{
   //margin-top: 2rem;
   width: 100%;
@@ -35,6 +36,23 @@
 }
 
 
+*/
 
+.card-grid{
+  margin-left: -.5em;
+  @include flexbox();
+  @include flex-wrap(wrap);
+
+  &.vertical-cards{
+    .card{
+      @include flex-wrap-fix($card-small-width);
+    }
+  }
+  .card{
+    // DONE
+    margin: .5em 0 .5em .5em;
+    @include flex-wrap-fix($card-width);
+  }
+}
 
 

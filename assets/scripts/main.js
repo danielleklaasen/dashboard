@@ -6,7 +6,7 @@
 
     Feedback to user
 
-    Touch events
+    Desktop notifications
 
     Navigation
 
@@ -19,8 +19,6 @@
     Update
 
     Delete
-
-    Desktop notifications
 
     Firebase
 
@@ -39,7 +37,7 @@ var sBlueprintMore = '<div class="circles-container">' +
     '<div class="circle"></div>' +
     '</div>';
 
-$('.more-btn').each(function( index ) {
+$('.more-btn').each(function() {
     $( this ).append(sBlueprintMore);
 });
 
@@ -48,25 +46,24 @@ $('.more-btn').each(function( index ) {
  FEEDBACK TO USER
 
  ********************************************************************************/
-var bTimerIsSet = false;
+var bTimerIsSet = false; // timer to hide notification
+
 var messageTimer;
 function fnResetTimer() {
     clearTimeout(messageTimer);
 }
 
-
 function fnShowMessage(message, type) {
-
     var sMessage = $('#message');
     sMessage.text(message);
 
     switch(type) {
         case "success":
-            sMessage.removeClass("error").addClass("success");
+            sMessage.removeClass("error").addClass("success"); // success color
             break;
         case "error":
             sMessage.className = "";
-            sMessage.removeClass("success").addClass("error");
+            sMessage.removeClass("success").addClass("error"); // error color
             break;
         default:
             sMessage.className = "";
@@ -77,25 +74,24 @@ function fnShowMessage(message, type) {
     }, 550);
 
     // handeling multiple messages
-    // only call hide message, when the message has been shown for 2 s
-    if(!bTimerIsSet){
-        messageTimer = setTimeout(function(){ fnHideMessage(); }, 2000);
-        bTimerIsSet = true;
-    }else{
-        fnResetTimer();
-        messageTimer = setTimeout(function(){ fnHideMessage(); }, 2000);
+    // only call hide message, when the last message has been shown for 2 s
+
+    if(bTimerIsSet){
+      fnResetTimer();  // there is a 2nd message, new timer required
     }
+
+    messageTimer = setTimeout(function(){ fnHideMessage(); }, 2000);
+    bTimerIsSet = true;
 }
 
 function fnHideMessage(){
-    bTimerIsSet = false;
+    bTimerIsSet = false; // reset timer
         var topValue="-50px";
         $('#message').animate({
             top: topValue
         }, 550);
 
 }
-
 
 /********************************************************************************************************
  Desktop notifications
@@ -136,6 +132,7 @@ function fnChangeTitle(baseTitle, notificationTitle) {
         }
     }else{
         clearInterval(changeTitle);
+        iterations = 0;
     }
     iterations++;
 }
@@ -148,17 +145,10 @@ function fnShowDesktopNotification(title) {
         var notification = new Notification(title);
 
         notification.onclick = function () {
-            // open report page on click
             fnOpenReportWdw();
         };
     }
 }
-
-/********************************************************************************
-
- TOUCH EVENTS
-
- ********************************************************************************/
 
 /********************************************************************************
 
@@ -215,7 +205,6 @@ $(document).on('click','.open-home', function(){
 });
 
 var fnOpenHomeWdw = function (){
-    // close all windows, home page is always open (main html)
     fnCloseAllWdws();
     fnOpenWdw('home-wdw');
     fnSetActiveMenuItem('open-home');
@@ -227,7 +216,6 @@ $(document).on('click','.open-profile', function(){
 });
 
 var fnOpenProfileWdw = function (){
-    // close all windows, home page is always open (main html)
     fnCloseAllWdws();
     fnOpenWdw('profile-wdw');
 };
@@ -254,19 +242,28 @@ var fnLogin = function(){
 
  ********************************************************************************/
 
+var sidebar = $("#sidebar");
+
+var fnOpenSidebar = function (){
+  if (!sidebar.hasClass('open')){
+    sidebar.addClass('open'); // open sidebar
+  }
+};
+
+var fnCloseSidebar = function (){
+  if (sidebar.hasClass('open')){
+    sidebar.removeClass('open'); // close sidebar
+  }
+};
+
 $(document).on('click', '.open-menu', function(){
-  console.log("open");
   fnOpenSidebar();
 });
 
 $(document).on('click', '.close-menu', function(){
-    console.log("close");
-    fnCloseSidebar();
+  fnCloseSidebar();
 });
 
-$(document).on('mouseover','#sidebar', function(){
-   // fnOpenSidebar();
-});
 $(document).on('mouseenter','#sidebar', function(){
   fnOpenSidebar();
 });
@@ -276,30 +273,12 @@ $(document).on('mouseleave','#sidebar', function(){
 });
 
 $(document).on('click', '.sidebar-close', function(){
-    fnCloseSidebar();
+  fnCloseSidebar();
 });
 
 $(document).on('click', '.menu-item-mobile', function(){
   fnCloseSidebar();
 });
-
-var sidebar = $("#sidebar");
-
-var fnOpenSidebar = function (){
-    if (!sidebar.hasClass('open')){
-        // open sidebar
-        $("#sidebar").addClass('open');
-    }
-};
-
-var fnCloseSidebar = function (){
-    if (sidebar.hasClass('open')){
-        // close sidebar
-        $("#sidebar").removeClass('open');
-      console.log("close");
-    }
-};
-
 /********************************************************************************
 
  SEARCH
@@ -351,7 +330,6 @@ var bikesRef = database.ref('bikes');
 bikesRef.on('value', function(snapshot) {
     sPendingReports = $('.pending-reports-num');
     sPendingReports.text(iPendingReports); // set number of pending reports in notification and dashboard
-   // var sPendingReports = snapshot.numChildren();
     snapshot.forEach(function(childSnapshot) { // loop through report items
 
         var childData = childSnapshot.val();
@@ -370,8 +348,8 @@ bikesRef.on('value', function(snapshot) {
                     fnAddPending(sKey, sCompanyName, aDamages);
                     iPendingReports++;
                     sPendingReports.text(iPendingReports); // set number of pending reports in notification and dashboard
-                    sPendingNotification.show();
-                    bNewPendingReports = true; // setting to true so notification will show
+                    sPendingNotification.show(); // show red dot notification of number new pending reports
+                    bNewPendingReports = true; // setting to true so browser notification will show
                     break;
                 case "accepted":
                     fnAddAccepted(sKey, sCompanyName, aDamages);
@@ -382,11 +360,8 @@ bikesRef.on('value', function(snapshot) {
                 default:
                 // default code here
             }
-
-            //add id to array
-            aLoadedReports.push(sKey);
+            aLoadedReports.push(sKey); //add id to array
         }
-
     });
     if(bFirstLoaded && bNewPendingReports){
         fnShowNotification("New pending reports","report");
@@ -395,13 +370,11 @@ bikesRef.on('value', function(snapshot) {
     bFirstLoaded = true; // initial batch loaded, ready to show notifications for new ones
 });
 
-
 var fnFormatDamage = function(damage){
     var sDamage = "";
     if(damage){
         //reformatting damage array
         for(var i = 0; i < damage.length; i++){
-
             if(i < 3){
                 sDamage += damage[i] + "<br>";
             }
@@ -420,9 +393,7 @@ var fnFormatDamage = function(damage){
 };
 
 var fnAddPending = function(key, company, damage ){
-
     var sDamage = fnFormatDamage(damage);
-
     //new object: add blueprint with data to html
     var sBlueprint = ' <div id="'+key+'" class="text-report-card card card-1">' +
         '<div class="h4 card-text">' +
@@ -518,8 +489,9 @@ var fnAcceptReport = function (that){
 /********************************************************************************
  Decline
  ********************************************************************************/
+
 $(document).on('click','.report-decline', function(){
-    fnDeclineReport(this);
+  fnDeclineReport(this);
 });
 
 var fnDeclineReport = function (that){
@@ -533,6 +505,38 @@ var fnDeclineReport = function (that){
     fnArchiveCard(sId, "decline");
     fnShowMessage("Report declined","error");
 };
+
+/*  Accept and decline combined in 1 function.
+    Even though it avoids writing double code I decided not to use this due to readability.
+
+var fnUpdateReportStatus = function (that, status){
+  var sId= that.parentNode.parentNode.id;
+  var sStatus;
+  var sMessageType;
+
+  switch (status){
+    case "accept":
+        sStatus = "accepted";
+        sMessageType = "success";
+        break;
+    case "decline":
+        sStatus = "declined";
+        sMessageType = "error";
+        break;
+    default:
+        // default code
+  }
+  var sMessage = "Report ";
+  sMessage += sStatus;
+  // update Database
+  fnSetStatus(sId, sStatus);
+
+  // update interface
+  fnRemovePendingNotification();
+  fnArchiveCard(sId, "accept");
+  fnShowMessage(sMessage,sMessageType);
+};
+ */
 
 /********************************************************************************
  Feedback
@@ -568,5 +572,4 @@ var fnDeleteReport = function (that){
 
     // update database
     fnRemoveFromDB(sId);
-
 };

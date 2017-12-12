@@ -1,9 +1,3 @@
-// to do
-
-// watch: minify css
-// build: run clean up dist + cache and populate dist
-// maybe also run build once in watch
-
 'use strict';
 var gulp = require('gulp');
 var sass = require('gulp-sass');

@@ -2,21 +2,21 @@
 
  TABLE OF CONTENTS
 
-    Desktop notifications
+    Desktop notifications        25
 
-    Feedback to user
+    Feedback to user             82
 
-    Navigation
-        Sidebar
+    Navigation                  133
+        Sidebar                 198
 
-    Login
+    Login                       233
 
-    Search
+    Search                      250
 
-    Firebase
-        Read
-        Update
-        Delete
+    Firebase                    276
+        Read                    284
+        Update                  415
+        Delete                  509
 
  ********************************************************************************/
 
@@ -38,31 +38,31 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 var oSound = new Audio('audio/notification.mp3'); // set up audio object
-var changeTitle;
-var iterations = 0;
+var oChangeTitle;
+var iIterations = 0;
 
 function fnShowNotification(title, report){
     oSound.play();
-    var baseTitle = document.title;
-    var notificationTitle = "New "+report+" received"; // reports / report depending on amount
-    changeTitle = setInterval(function(){
-        fnChangeTitle(baseTitle, notificationTitle);
+    var sBaseTitle = document.title;
+    var sNotificationTitle = "New "+report+" received"; // reports / report depending on amount
+    oChangeTitle = setInterval(function(){
+        fnChangeTitle(sBaseTitle, sNotificationTitle);
     }, 1000);
     fnShowDesktopNotification(title);
 }
 
 function fnChangeTitle(baseTitle, notificationTitle) { // browser tab title change
-    if (iterations < 6){
+    if (iIterations < 6){
         if(document.title === baseTitle){
             document.title = notificationTitle;
         }else{
             document.title = baseTitle;
         }
     }else{
-        clearInterval(changeTitle);
-        iterations = 0;
+        clearInterval(oChangeTitle);
+        iIterations = 0;
     }
-    iterations++;
+    iIterations++;
 }
 
 function fnShowDesktopNotification(title) {
@@ -70,8 +70,8 @@ function fnShowDesktopNotification(title) {
         Notification.requestPermission();
     }
     else {
-        var notification = new Notification(title);
-        notification.onclick = function () {
+        var oNotification = new Notification(title);
+        oNotification.onclick = function () {
             fnOpenReportWdw();
         };
     }
@@ -84,9 +84,9 @@ function fnShowDesktopNotification(title) {
  ********************************************************************************/
 var bTimerIsSet = false; // timer to hide notification
 
-var messageTimer;
+var oMessageTimer;
 function fnResetTimer() {
-  clearTimeout(messageTimer);
+  clearTimeout(oMessageTimer);
 }
 
 function fnShowMessage(message, type) {
@@ -116,15 +116,15 @@ function fnShowMessage(message, type) {
     fnResetTimer();  // there is another message coming in, new timer required
   }
 
-  messageTimer = setTimeout(function(){ fnHideMessage(); }, 2000);
+  oMessageTimer = setTimeout(function(){ fnHideMessage(); }, 2000);
   bTimerIsSet = true;
 }
 
 function fnHideMessage(){
   bTimerIsSet = false; // reset timer
-  var topValue="-50px";
+  var sTopValue="-50px";
   $('#message').animate({
-    top: topValue
+    top: sTopValue
   }, 550);
 }
 
@@ -198,17 +198,17 @@ $(document).on('click','.open-profile', function(){
  SIDEBAR
  ********************************************************************************/
 
-var sidebar = $("#sidebar");
+var sSidebar = $("#sidebar");
 
 var fnOpenSidebar = function (){
-  if (!sidebar.hasClass('open')){
-    sidebar.addClass('open'); // open sidebar
+  if (!sSidebar.hasClass('open')){
+    sSidebar.addClass('open'); // open sSidebar
   }
 };
 
 var fnCloseSidebar = function (){
-  if (sidebar.hasClass('open')){
-    sidebar.removeClass('open'); // close sidebar
+  if (sSidebar.hasClass('open')){
+    sSidebar.removeClass('open'); // close sSidebar
   }
 };
 
@@ -278,7 +278,7 @@ var fnOpenSearch = function (){
  ********************************************************************************/
 
 // Get a reference to the database service
-var database = firebase.database();
+var oDatabase = firebase.database();
 
 /********************************************************************************
  Read
@@ -291,26 +291,27 @@ var bFirstLoaded = false;
 var bNewPendingReports = false;
 var aLoadedReports = [];
 
-var bikesRef = database.ref('bikes');
-bikesRef.orderByChild("timeStamp").on('value', function(snapshot) {
+var oBikesRef = oDatabase.ref('bikes');
+
+oBikesRef.orderByChild("timeStamp").on('value', function(snapshot) { // sort on date (ascending)
     sPendingReports = $('.pending-reports-num');
     sPendingReports.text(iPendingReports); // set number of pending reports in notification and dashboard
     snapshot.forEach(function(childSnapshot) { // loop through report items
 
-        var childData = childSnapshot.val();
-        var sKey = childData.bikeID;
-        var sTimeStamp = childData.timeStamp;
+        var oChildData = childSnapshot.val();
+        var sKey = oChildData.bikeID;
+        var sTimeStamp = oChildData.timeStamp;
 
+        console.log("timestamp: "+sTimeStamp);
 
         if ($.inArray(sKey, aLoadedReports) != -1) {
             //the object ID is already in aIdProperties array
         }else{
-          console.log("timestamp: "+sTimeStamp);
             // report not loaded yet
-            var sCompanyName = childData.companyName;
-            var aDamages = childData.damages;
+            var sCompanyName = oChildData.companyName;
+            var aDamages = oChildData.damages;
 
-            var sStatus = childData.status;
+            var sStatus = oChildData.status;
 
             switch(sStatus) {
                 case "pending":
@@ -362,7 +363,7 @@ var fnFormatDamage = function(damage){
 };
 
 var fnAddPending = function(key, company, damage ){
-    var sDamage = fnFormatDamage(damage);
+    var sDamage = fnFormatDamage(damage); // adds more button if necessary
     // new object: add blueprint with data to html
     var sBlueprint = ' <div id="'+key+'" class="text-report-card card card-1">' +
         '<div class="h4 card-text">' +
@@ -415,7 +416,7 @@ var fnAddDeclined = function(key, company, damage){
  ********************************************************************************/
 
 var fnSetStatus = function(id, val){
-    database.ref('bikes/' + id + '/status').set(val);
+    oDatabase.ref('bikes/' + id + '/status').set(val);
 };
 
 var fnArchiveCard = function(id, status){
@@ -511,7 +512,7 @@ var fnUpdateReportStatus = function (that, status){
 var fnDeleteReport = function(that){
   var sId= that.parentNode.parentNode.id;
     // update database
-    database.ref('bikes/' + sId).remove(function(error){
+    oDatabase.ref('bikes/' + sId).remove(function(error){
       // update interface if successful
         if(!error){
           $('#'+sId).remove(); // remove card

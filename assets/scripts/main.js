@@ -2,100 +2,29 @@
 
  TABLE OF CONTENTS
 
-    Setup
+    Desktop notifications
 
     Feedback to user
 
-    Desktop notifications
-
     Navigation
+        Sidebar
 
-    Sidebar
+    Login
 
     Search
 
-    Read
-
-    Update
-
-    Delete
-
     Firebase
+        Read
+        Update
+        Delete
 
  ********************************************************************************/
 
 /********************************************************************************
 
- SETUP
-
- ********************************************************************************/
-
-// append to more button, to keep html cleaner
-var sBlueprintMore = '<div class="circles-container">' +
-    '<div class="circle"></div>' +
-    '<div class="circle"></div>' +
-    '<div class="circle"></div>' +
-    '</div>';
-
-$('.more-btn').each(function() {
-    $( this ).append(sBlueprintMore);
-});
-
-/********************************************************************************
-
- FEEDBACK TO USER
-
- ********************************************************************************/
-var bTimerIsSet = false; // timer to hide notification
-
-var messageTimer;
-function fnResetTimer() {
-    clearTimeout(messageTimer);
-}
-
-function fnShowMessage(message, type) {
-    var sMessage = $('#message');
-    sMessage.text(message);
-
-    switch(type) {
-        case "success":
-            sMessage.removeClass("error").addClass("success"); // success color
-            break;
-        case "error":
-            sMessage.className = "";
-            sMessage.removeClass("success").addClass("error"); // error color
-            break;
-        default:
-            sMessage.className = "";
-    }
-
-    sMessage.animate({
-        top: 0
-    }, 550);
-
-    // handeling multiple messages
-    // only call hide message, when the last message has been shown for 2 s
-
-    if(bTimerIsSet){
-      fnResetTimer();  // there is a 2nd message, new timer required
-    }
-
-    messageTimer = setTimeout(function(){ fnHideMessage(); }, 2000);
-    bTimerIsSet = true;
-}
-
-function fnHideMessage(){
-    bTimerIsSet = false; // reset timer
-        var topValue="-50px";
-        $('#message').animate({
-            top: topValue
-        }, 550);
-
-}
-
-/********************************************************************************************************
  Desktop notifications
- ********************************************************************************************************/
+
+ ********************************************************************************/
 
 // request permission on page load
 document.addEventListener('DOMContentLoaded', function () {
@@ -108,22 +37,21 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-var oSound = new Audio('audio/notification.mp3'); //o because Object
-
+var oSound = new Audio('audio/notification.mp3'); // set up audio object
 var changeTitle;
 var iterations = 0;
 
 function fnShowNotification(title, report){
     oSound.play();
     var baseTitle = document.title;
-    var notificationTitle = "New "+report+" received"; // report is single or plural --> report(s)
+    var notificationTitle = "New "+report+" received"; // reports / report depending on amount
     changeTitle = setInterval(function(){
         fnChangeTitle(baseTitle, notificationTitle);
     }, 1000);
     fnShowDesktopNotification(title);
 }
 
-function fnChangeTitle(baseTitle, notificationTitle) {
+function fnChangeTitle(baseTitle, notificationTitle) { // browser tab title change
     if (iterations < 6){
         if(document.title === baseTitle){
             document.title = notificationTitle;
@@ -143,11 +71,61 @@ function fnShowDesktopNotification(title) {
     }
     else {
         var notification = new Notification(title);
-
         notification.onclick = function () {
             fnOpenReportWdw();
         };
     }
+}
+
+/********************************************************************************
+
+ FEEDBACK TO USER
+
+ ********************************************************************************/
+var bTimerIsSet = false; // timer to hide notification
+
+var messageTimer;
+function fnResetTimer() {
+  clearTimeout(messageTimer);
+}
+
+function fnShowMessage(message, type) {
+  var sMessage = $('#message');
+  sMessage.text(message);
+
+  switch(type) {
+    case "success":
+      sMessage.removeClass("error").addClass("success"); // success color notification
+      break;
+    case "error":
+      sMessage.className = "";
+      sMessage.removeClass("success").addClass("error"); // error color notification
+      break;
+    default:
+      sMessage.className = "";
+  }
+
+  sMessage.animate({
+    top: 0
+  }, 550);
+
+  // handling multiple messages
+  // only call hide message, when the most recent message has been shown for 2 s
+
+  if(bTimerIsSet){
+    fnResetTimer();  // there is another message coming in, new timer required
+  }
+
+  messageTimer = setTimeout(function(){ fnHideMessage(); }, 2000);
+  bTimerIsSet = true;
+}
+
+function fnHideMessage(){
+  bTimerIsSet = false; // reset timer
+  var topValue="-50px";
+  $('#message').animate({
+    top: topValue
+  }, 550);
 }
 
 /********************************************************************************
@@ -173,73 +151,51 @@ var fnSetActiveMenuItem = function (activeMenuItem) {
     $('.' + activeMenuItem).addClass('active');
 };
 
+var fnOpenReportWdw = function (){
+  fnCloseAllWdws();
+  fnOpenWdw('report-wdw');
+  fnSetActiveMenuItem('open-report-wdw');
+};
+
+var fnOpenArchiveWdw = function (){
+  fnCloseAllWdws();
+  fnOpenWdw('archive-wdw');
+  fnSetActiveMenuItem('open-archive-wdw');
+};
+
+var fnOpenHomeWdw = function (){
+  fnCloseAllWdws();
+  fnOpenWdw('home-wdw');
+  fnSetActiveMenuItem('open-home');
+};
+
+var fnOpenProfileWdw = function (){
+  fnCloseAllWdws();
+  fnOpenWdw('profile-wdw');
+};
+
 // open-report-wdw
 $(document).on('click','.open-report-wdw', function(){
     fnOpenReportWdw();
 });
-
-var fnOpenReportWdw = function (){
-    fnCloseAllWdws();
-    fnOpenWdw('report-wdw');
-    fnSetActiveMenuItem('open-report-wdw');
-};
 
 // open-archive-wdw
 $(document).on('click','.open-archive-wdw', function(){
     fnOpenArchiveWdw();
 });
 
-$(document).on('click','.menu-item', function(){
-    fnCloseSidebar();
-});
-
-var fnOpenArchiveWdw = function (){
-    fnCloseAllWdws();
-    fnOpenWdw('archive-wdw');
-    fnSetActiveMenuItem('open-archive-wdw');
-};
-
 // open-home-wdw
 $(document).on('click','.open-home', function(){
     fnOpenHomeWdw();
 });
-
-var fnOpenHomeWdw = function (){
-    fnCloseAllWdws();
-    fnOpenWdw('home-wdw');
-    fnSetActiveMenuItem('open-home');
-};
 
 // open-profile-wdw
 $(document).on('click','.open-profile', function(){
     fnOpenProfileWdw();
 });
 
-var fnOpenProfileWdw = function (){
-    fnCloseAllWdws();
-    fnOpenWdw('profile-wdw');
-};
-
 /********************************************************************************
-
- LOGIN
-
- ********************************************************************************/
-
-$(document).on('click','.btn-login', function(e){
-    e.preventDefault();
-    fnLogin();
-});
-
-var fnLogin = function(){
-    var sOpenWindow = $('.login-wdw');
-    sOpenWindow.fadeOut();
-    fnOpenHomeWdw();
-};
-/********************************************************************************
-
  SIDEBAR
-
  ********************************************************************************/
 
 var sidebar = $("#sidebar");
@@ -260,10 +216,6 @@ $(document).on('click', '.open-menu', function(){
   fnOpenSidebar();
 });
 
-$(document).on('click', '.close-menu', function(){
-  fnCloseSidebar();
-});
-
 $(document).on('mouseenter','#sidebar', function(){
   fnOpenSidebar();
 });
@@ -272,13 +224,27 @@ $(document).on('mouseleave','#sidebar', function(){
   fnCloseSidebar();
 });
 
-$(document).on('click', '.sidebar-close', function(){
+$(document).on('click touchend', '.close-menu, .sidebar-close, .menu-item-mobile, .menu-item', function(){
   fnCloseSidebar();
 });
 
-$(document).on('click', '.menu-item-mobile', function(){
-  fnCloseSidebar();
+/********************************************************************************
+
+ LOGIN
+
+ ********************************************************************************/
+
+var fnLogin = function(){
+  var sOpenWindow = $('.login-wdw');
+  sOpenWindow.fadeOut();
+  fnOpenHomeWdw();
+};
+
+$(document).on('click','.btn-login', function(e){
+    e.preventDefault();
+    fnLogin();
 });
+
 /********************************************************************************
 
  SEARCH
@@ -305,7 +271,6 @@ var fnOpenSearch = function (){
     $( "#search-input" ).focus();
 };
 
-
 /********************************************************************************
 
  FIREBASE
@@ -327,22 +292,26 @@ var bNewPendingReports = false;
 var aLoadedReports = [];
 
 var bikesRef = database.ref('bikes');
-bikesRef.on('value', function(snapshot) {
+bikesRef.orderByChild("timeStamp").on('value', function(snapshot) {
     sPendingReports = $('.pending-reports-num');
     sPendingReports.text(iPendingReports); // set number of pending reports in notification and dashboard
     snapshot.forEach(function(childSnapshot) { // loop through report items
 
         var childData = childSnapshot.val();
         var sKey = childData.bikeID;
+        var sTimeStamp = childData.timeStamp;
+
 
         if ($.inArray(sKey, aLoadedReports) != -1) {
             //the object ID is already in aIdProperties array
         }else{
+          console.log("timestamp: "+sTimeStamp);
             // report not loaded yet
             var sCompanyName = childData.companyName;
             var aDamages = childData.damages;
 
             var sStatus = childData.status;
+
             switch(sStatus) {
                 case "pending":
                     fnAddPending(sKey, sCompanyName, aDamages);
@@ -373,7 +342,7 @@ bikesRef.on('value', function(snapshot) {
 var fnFormatDamage = function(damage){
     var sDamage = "";
     if(damage){
-        //reformatting damage array
+        // reformatting damage array
         for(var i = 0; i < damage.length; i++){
             if(i < 3){
                 sDamage += damage[i] + "<br>";
@@ -394,7 +363,7 @@ var fnFormatDamage = function(damage){
 
 var fnAddPending = function(key, company, damage ){
     var sDamage = fnFormatDamage(damage);
-    //new object: add blueprint with data to html
+    // new object: add blueprint with data to html
     var sBlueprint = ' <div id="'+key+'" class="text-report-card card card-1">' +
         '<div class="h4 card-text">' +
         '<p class="bold">Damaged part(s)</p>'+sDamage+'<br/><br/>' +
@@ -411,7 +380,7 @@ var fnAddPending = function(key, company, damage ){
 
 var fnAddAccepted = function(key, company, damage){
     var sDamage = fnFormatDamage(damage);
-    //new object: add blueprint with data to html
+    // new object: add blueprint with data to html
     var sBlueprint = ' <div id="'+key+'" class="text-report-card card card-1 card-accept">' +
         '<div class="h4 card-text">' +
         '<p class="bold">Damaged part(s)</p>'+sDamage+'<br/><br/>' +
@@ -441,7 +410,6 @@ var fnAddDeclined = function(key, company, damage){
     $("#archive-container").append( sBlueprint ); // add pending report to container
 };
 
-
 /********************************************************************************
  UPDATE
  ********************************************************************************/
@@ -461,8 +429,7 @@ var fnRemovePendingNotification = function(){
   if(iPendingReports===0){
     sPendingNotification.hide();
   }
-  sPendingReports = $('.pending-reports-num');
-  sPendingReports.text(iPendingReports); // set number of pending reports in notification and dashboard
+  $('.pending-reports-num').text(iPendingReports); // set number of pending reports in notification and dashboard
 };
 
 /********************************************************************************
@@ -483,7 +450,6 @@ var fnAcceptReport = function (that){
     fnRemovePendingNotification();
     fnArchiveCard(sId, "accept");
     fnShowMessage("Report accepted","success");
-
 };
 
 /********************************************************************************
@@ -539,24 +505,18 @@ var fnUpdateReportStatus = function (that, status){
  */
 
 /********************************************************************************
- Feedback
- ********************************************************************************/
-// remove card from interface
-var fnRemoveCard = function (id) {
-    $('#'+id).remove();
-};
-
-/********************************************************************************
  DELETE
  ********************************************************************************/
 
-var fnRemoveFromDB = function(id){
-    database.ref('bikes/' + id).remove(function(error){
+var fnDeleteReport = function(that){
+  var sId= that.parentNode.parentNode.id;
+    // update database
+    database.ref('bikes/' + sId).remove(function(error){
       // update interface if successful
         if(!error){
+          $('#'+sId).remove(); // remove card
+          aLoadedReports.splice(sId, 1);
           fnShowMessage("Report deleted!","success");
-          fnRemoveCard(id);
-          aLoadedReports.splice(id, 1);
         }else{
           fnShowMessage("Delete failed...","error");
         }
@@ -566,10 +526,3 @@ var fnRemoveFromDB = function(id){
 $(document).on('click','.report-delete', function(){
     fnDeleteReport(this);
 });
-
-var fnDeleteReport = function (that){
-    var sId= that.parentNode.parentNode.id;
-
-    // update database
-    fnRemoveFromDB(sId);
-};
